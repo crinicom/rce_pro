@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  responsable_id: 1
+  nombre: MyString
+  descripcion: MyText
+
+two:
+  responsable_id: 1
+  nombre: MyString
+  descripcion: MyText

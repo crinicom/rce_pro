@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  proyecto_id: 1
+  fecha_creacion: 2014-10-06 16:02:38
+  persona_id: 1
+  tipo_entrada_id: 1
+  comentario: MyText
+  tiempo: 1
+
+two:
+  proyecto_id: 1
+  fecha_creacion: 2014-10-06 16:02:38
+  persona_id: 1
+  tipo_entrada_id: 1
+  comentario: MyText
+  tiempo: 1

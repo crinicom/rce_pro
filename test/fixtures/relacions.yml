@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  proyectoA_id: 1
+  proyectoB_id: 1
+  tipo_relacion_id: 1
+
+two:
+  proyectoA_id: 1
+  proyectoB_id: 1
+  tipo_relacion_id: 1
