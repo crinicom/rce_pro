@@ -12,7 +12,9 @@
   <tbody>
     <% @proyectos.each do |proyecto| %>
       <tr>
-        <td><%= link_to 'Show', proyecto %></td>
+        <td><%= proyecto.nombre %></td>
+		<td><%= proyecto.horas %></td>
+		<td><%= link_to 'Show', proyecto %></td>
         <td><%= link_to 'Edit', edit_proyecto_path(proyecto) %></td>
         <td><%= link_to 'Destroy', proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
