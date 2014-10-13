@@ -1,0 +1,36 @@
+<%= form_for(@relacion) do |f| %>
+  <% if @relacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@relacion.errors.count, "error") %> prohibited this relacion from being saved:</h2>
+
+      <ul>
+      <% @relacion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+ 
+ <% proyectos = Proyecto.find(:all, :order => :nombre) %>
+<p>Proyecto A: 
+  <%= f.collection_select :proyectoA_id, proyectos, :id, :nombre %>
+</p>
+
+<p>Proyecto B: 
+  <%= f.collection_select :proyectoB_id, proyectos, :id, :nombre %>
+</p>
+ 
+ <% tipos_rel = TipoRelacion.find(:all, :order => :nombre) %>
+<p>Tipo relacion: 
+  <%= f.collection_select :tipo_relacion_id, tipos_rel, :id, :nombre %>
+</p>
+
+ 
+ 
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -12,7 +12,8 @@
   <tbody>
     <% @proyectos.each do |proyecto| %>
       <tr>
-        <td><%= proyecto.nombre %></td>
+        <td><%= proyecto.id %></td>
+		<td><%= proyecto.nombre %></td>
 		<td><%= proyecto.horas %></td>
 		<td><%= link_to 'Show', proyecto %></td>
         <td><%= link_to 'Edit', edit_proyecto_path(proyecto) %></td>

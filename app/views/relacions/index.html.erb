@@ -1,0 +1,50 @@
+<h1>Listing relacions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+	  <th></th>
+      <th></th>
+      <th></th>
+	  <th></th>
+      
+    </tr>
+  </thead>
+
+ <% proyectos = Proyecto.all( :order => :nombre) %>
+ 
+ <% tipos_rel = TipoRelacion.all(:order => :nombre) %>
+  
+  <tbody>
+    <% @relacions.each do |relacion| %>
+      <tr>
+		<%=pA_id = relacion.proyectoA_id-1%>
+		<%=pB_id = relacion.proyectoB_id-1%>
+		<%=trel = relacion.tipo_relacion_id-1%>
+				
+		<td><p>rel ID: <%= relacion.id%></td>
+		<td><p>PA ID: <%= relacion.proyectoA_id %></td>
+		<td><p>PB ID: <%= relacion.proyectoB_id %></td>
+		<td><p>tipo_rel ID <%= relacion.tipo_relacion_id %></td>
+		
+		<% if pA_id.nil? == false && pB_id.nil?  == false && trel.nil? == false %>
+			<td><%= proyectos[pA_id].nombre %></td>
+			<td><%= proyectos[pB_id].nombre %></td>
+			<td><%= tipos_rel[trel].nombre %></td>
+			<td><%= tipos_rel[trel].descripcion %></td>
+		<%end%>
+		
+        <td><%= link_to 'Show', relacion %></td>
+        <td><%= link_to 'Edit', edit_relacion_path(relacion) %></td>
+        <td><%= link_to 'Destroy', relacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Relacion', new_relacion_path %>

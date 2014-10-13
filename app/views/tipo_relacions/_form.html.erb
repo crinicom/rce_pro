@@ -1,0 +1,27 @@
+<%= form_for(@tipo_relacion) do |f| %>
+  <% if @tipo_relacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipo_relacion.errors.count, "error") %> prohibited this tipo_relacion from being saved:</h2>
+
+      <ul>
+      <% @tipo_relacion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+ <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre, :autofocus=>true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
