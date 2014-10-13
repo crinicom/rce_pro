@@ -12,6 +12,8 @@
   <tbody>
     <% @tipo_entradas.each do |tipo_entrada| %>
       <tr>
+		<td><%= tipo_entrada.nombre %></td>
+		<td><%= tipo_entrada.descripcion %></td>
         <td><%= link_to 'Show', tipo_entrada %></td>
         <td><%= link_to 'Edit', edit_tipo_entrada_path(tipo_entrada) %></td>
         <td><%= link_to 'Destroy', tipo_entrada, method: :delete, data: { confirm: 'Are you sure?' } %></td>

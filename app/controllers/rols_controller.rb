@@ -69,6 +69,7 @@ class RolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rol_params
-      params[:rol]
+      
+	  params.require(:rol).permit(:nombre, :descripcion)
     end
 end

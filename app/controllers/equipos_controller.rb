@@ -69,6 +69,7 @@ class EquiposController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipo_params
-      params[:equipo]
+      
+	  params.require(:equipo).permit(:responsable_id,:nombre, :descripcion)
     end
 end

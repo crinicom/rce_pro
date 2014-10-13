@@ -9,9 +9,14 @@
     </tr>
   </thead>
 
+  <% personas = Persona.all %>
   <tbody>
     <% @equipos.each do |equipo| %>
       <tr>
+		<td><%= personas.find(equipo.responsable_id).nombre %></td>
+		<td><%= equipo.nombre %></td>
+		<td><%= equipo.descripcion %></td>
+		
         <td><%= link_to 'Show', equipo %></td>
         <td><%= link_to 'Edit', edit_equipo_path(equipo) %></td>
         <td><%= link_to 'Destroy', equipo, method: :delete, data: { confirm: 'Are you sure?' } %></td>

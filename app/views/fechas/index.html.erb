@@ -9,9 +9,16 @@
     </tr>
   </thead>
 
+  <% proyectos = Proyecto.all%>
+  <% hitos = Hito.all%>
+  
   <tbody>
     <% @fechas.each do |fecha| %>
       <tr>
+		<td><%= proyectos.find(fecha.proyecto_id).nombre %></td>
+		<td><%=fecha.fecha %></td>
+		<td><%=hitos.find(fecha.hito_id).nombre %></td>
+		
         <td><%= link_to 'Show', fecha %></td>
         <td><%= link_to 'Edit', edit_fecha_path(fecha) %></td>
         <td><%= link_to 'Destroy', fecha, method: :delete, data: { confirm: 'Are you sure?' } %></td>

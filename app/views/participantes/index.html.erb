@@ -9,9 +9,17 @@
     </tr>
   </thead>
 
+  <% proyectos = Proyecto.all%>
+  <% personas = Persona.all%>
+  <% roles = Rol.all%>
+  
   <tbody>
     <% @participantes.each do |participante| %>
       <tr>
+		<td><%=proyectos.find(participante.proyecto_id).nombre %></td>
+		<td><%=personas.find(participante.persona_id).nombre %></td>
+		<td><%=roles.find(participante.rol_id).nombre %></td>
+		
         <td><%= link_to 'Show', participante %></td>
         <td><%= link_to 'Edit', edit_participante_path(participante) %></td>
         <td><%= link_to 'Destroy', participante, method: :delete, data: { confirm: 'Are you sure?' } %></td>

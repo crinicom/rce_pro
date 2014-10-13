@@ -69,6 +69,6 @@ class TipoEntradasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tipo_entrada_params
-      params[:tipo_entrada]
+	  params.require(:tipo_entrada).permit(:nombre, :descripcion)
     end
 end

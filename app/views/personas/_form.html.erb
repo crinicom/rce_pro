@@ -11,6 +11,32 @@
     </div>
   <% end %>
 
+   <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre, :autofocus => true %>
+  </div>
+
+   <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email%>
+  </div>
+
+  <% estados = Estado.find(:all, :order => :nombre) %>
+<p>Estado: 
+  <%= f.collection_select :estado_id, estados, :id, :nombre %>
+</p>
+
+   <% equipos = Equipo.find(:all, :order => :nombre) %>
+<p>Equipo: 
+  <%= f.collection_select :equipo_id, equipos, :id, :nombre %>
+</p>
+  
+  <% jefes = Persona.find(:all, :order => :nombre) %>
+<p>Jefe: 
+  <%= f.collection_select :jefe_id, jefes, :id, :nombre %>
+</p>
+   
+  
   <div class="actions">
     <%= f.submit %>
   </div>

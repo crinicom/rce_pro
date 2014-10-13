@@ -11,6 +11,21 @@
     </div>
   <% end %>
 
+   <% proyectos = Proyecto.find(:all, :order => :nombre) %>
+<p>Proyecto A: 
+  <%= f.collection_select :proyecto_id, proyectos, :id, :nombre, :autofocus => true  %>
+</p>
+  
+   <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.date_field :fecha%>
+  </div>
+
+   <% hitos = Hito.find(:all, :order => :nombre) %>
+<p>Proyecto A: 
+  <%= f.collection_select :hito_id, hitos, :id, :nombre%>
+</p>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -12,6 +12,8 @@
   <tbody>
     <% @hitos.each do |hito| %>
       <tr>
+	  <td><%= hito.nombre %></td>
+		<td><%= hito.descripcion %></td>
         <td><%= link_to 'Show', hito %></td>
         <td><%= link_to 'Edit', edit_hito_path(hito) %></td>
         <td><%= link_to 'Destroy', hito, method: :delete, data: { confirm: 'Are you sure?' } %></td>

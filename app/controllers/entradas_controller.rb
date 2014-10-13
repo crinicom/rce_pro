@@ -69,6 +69,7 @@ class EntradasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrada_params
-      params[:entrada]
+      
+	  params.require(:entrada).permit(:proyecto_id, :fecha_creacion,:persona_id,:tipo_entrada_id,:comentario,:tiempo)
     end
 end

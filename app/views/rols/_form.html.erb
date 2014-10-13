@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+   <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre, :autofocus => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcion %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

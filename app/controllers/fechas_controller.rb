@@ -69,6 +69,6 @@ class FechasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fecha_params
-      params[:fecha]
+	  params.require(:fecha).permit(:proyecto_id, :fecha,:hito_id)
     end
 end

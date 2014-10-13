@@ -69,6 +69,6 @@ class HitosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hito_params
-      params[:hito]
+	  params.require(:hito).permit(:nombre, :descripcion)
     end
 end

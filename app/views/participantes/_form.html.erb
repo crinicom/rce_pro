@@ -11,6 +11,21 @@
     </div>
   <% end %>
 
+  <% personas = Persona.find(:all, :order => :nombre) %>
+<p>Persona: 
+  <%= f.collection_select :persona_id, personas, :id, :nombre %>
+</p>
+ 
+ <% proyectos = Proyecto.find(:all, :order => :nombre) %>
+<p>Proyecto:
+  <%= f.collection_select :proyecto_id, proyectos, :id, :nombre %>
+</p>
+  
+ <% roles = Rol.find(:all, :order => :nombre) %>
+<p>Rol en este proyecto:
+  <%= f.collection_select :rol_id, roles, :id, :nombre %>
+</p>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

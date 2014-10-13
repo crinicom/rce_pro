@@ -15,6 +15,15 @@ RCEPro::Application.routes.draw do
      resources :proyectos
 	 resources :tipo_relacions
 	 resources :relacions
+	 resources :entradas
+	 resources :equipos
+	 resources :fechas
+	 resources :hitos
+	 resources :participantes
+	 resources :personas
+	 resources :rols
+	 resources :tipo_entradas
+	 resources :estados
 
   # Example resource route with options:
   #   resources :products do
