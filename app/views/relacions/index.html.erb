@@ -3,40 +3,28 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-	  <th></th>
-      <th></th>
-      <th></th>
-	  <th></th>
+      <th><p>ID_rel</th>
+      <th><p>Proyecto A</th>
+      <th><p>tipo relacion</th>
+	  <th><p>Proyecto B</th>
+      <th><p>Comentario</th>
       
     </tr>
   </thead>
 
- <% proyectos = Proyecto.all( :order => :nombre) %>
+ <% proyectos = Proyecto.all %>
  
- <% tipos_rel = TipoRelacion.all(:order => :nombre) %>
+ <% tiporel = TipoRelacion.all %>
   
   <tbody>
     <% @relacions.each do |relacion| %>
       <tr>
-		<%=pA_id = relacion.proyectoA_id-1%>
-		<%=pB_id = relacion.proyectoB_id-1%>
-		<%=trel = relacion.tipo_relacion_id-1%>
-				
-		<td><p>rel ID: <%= relacion.id%></td>
-		<td><p>PA ID: <%= relacion.proyectoA_id %></td>
-		<td><p>PB ID: <%= relacion.proyectoB_id %></td>
-		<td><p>tipo_rel ID <%= relacion.tipo_relacion_id %></td>
-		
-		<% if pA_id.nil? == false && pB_id.nil?  == false && trel.nil? == false %>
-			<td><%= proyectos[pA_id].nombre %></td>
-			<td><%= proyectos[pB_id].nombre %></td>
-			<td><%= tipos_rel[trel].nombre %></td>
-			<td><%= tipos_rel[trel].descripcion %></td>
-		<%end%>
-		
+			<td><%= relacion.id %></td>
+			<td><%= proyectos.find(relacion.proyectoA_id).nombre %></td>
+			<td><%= tiporel.find(relacion.tipo_relacion_id).nombre%></td>
+			<td><%= proyectos.find(relacion.proyectoB_id).nombre %></td>
+			<td><%= tiporel.find(relacion.tipo_relacion_id).descripcion %></td>
+			
         <td><%= link_to 'Show', relacion %></td>
         <td><%= link_to 'Edit', edit_relacion_path(relacion) %></td>
         <td><%= link_to 'Destroy', relacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
