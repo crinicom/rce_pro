@@ -1,0 +1,17 @@
+<%= form_for(@tipo_entrada) do |f| %>
+  <% if @tipo_entrada.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipo_entrada.errors.count, "error") %> prohibited this tipo_entrada from being saved:</h2>
+
+      <ul>
+      <% @tipo_entrada.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

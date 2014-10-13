@@ -1,0 +1,25 @@
+<h1>Listing tipo_entradas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipo_entradas.each do |tipo_entrada| %>
+      <tr>
+        <td><%= link_to 'Show', tipo_entrada %></td>
+        <td><%= link_to 'Edit', edit_tipo_entrada_path(tipo_entrada) %></td>
+        <td><%= link_to 'Destroy', tipo_entrada, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tipo entrada', new_tipo_entrada_path %>

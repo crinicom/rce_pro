@@ -1,0 +1,17 @@
+<%= form_for(@hito) do |f| %>
+  <% if @hito.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hito.errors.count, "error") %> prohibited this hito from being saved:</h2>
+
+      <ul>
+      <% @hito.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
