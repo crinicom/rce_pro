@@ -1,3 +1,13 @@
+
+<%= render @proyecto %>
+
+<h3>Entradas</h3>
+<div id="entradas">
+<%= render @proyecto.entradas %>
+</div>
+
+<%= render :file => 'entradas/new' %>
+
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Edit', edit_proyecto_path(@proyecto) %> |

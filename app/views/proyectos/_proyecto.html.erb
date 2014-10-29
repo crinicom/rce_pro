@@ -1,0 +1,10 @@
+<%= div_for proyecto do %>
+<h3>
+<%= link_to proyecto.nombre, proyecto %>
+<span class='actions'>
+<%= link_to 'Edit', edit_proyecto_path(@proyecto) %> |
+<%= link_to 'Back', proyectos_path %>
+<%= link_to "Delete", proyecto, confirm: "Are you sure?", method: :delete %>
+</span>
+</h3>
+<% end %>

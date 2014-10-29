@@ -1,5 +1,6 @@
 class EntradasController < ApplicationController
-  before_action :set_entrada, only: [:show, :edit, :update, :destroy]
+  #before_action :set_entrada, only: [:show, :edit, :update, :destroy]
+  before_action :load_proyecto
 
   # GET /entradas
   # GET /entradas.json
@@ -24,15 +25,17 @@ class EntradasController < ApplicationController
   # POST /entradas
   # POST /entradas.json
   def create
-    @entrada = Entrada.new(entrada_params)
+    # original: @entrada = Entrada.new(entrada_params)
+	@entrada = @proyecto.entradas.new(entrada_params)
 
+	
     respond_to do |format|
       if @entrada.save
-        format.html { redirect_to @entrada, notice: 'Entrada was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @entrada }
+        format.html { redirect_to @proyecto, notice: 'Entrada was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @proyecto }
       else
         format.html { render action: 'new' }
-        format.json { render json: @entrada.errors, status: :unprocessable_entity }
+        format.json { render json: @proyecto.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,0 +1,11 @@
+<%= div_for entrada do %>
+<h3>
+<%= entrada.persona_id %> &lt;<%= entrada.persona_id %>&gt; said:
+<span class='actions'>
+<%= link_to 'Delete', proyecto_entrada_path(:proyecto_id => @proyecto,
+:id => entrada), confirm: 'Are you sure?', method: :delete %>
+</span>
+</h3>
+<%= entrada.comentario %>
+<%= entrada.tiempo %>
+<% end %>
