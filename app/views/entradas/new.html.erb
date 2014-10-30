@@ -1,17 +1,10 @@
 <h1>New entrada</h1>
 
+
+
 <%= form_for([@proyecto, @proyecto.entradas.new]) do |f| %>
 
-<%
-=begin
-%>
-<% proyectos = Proyecto.find(:all, :order => :nombre) %>
-<p>Proyecto A: 
-  <%= f.collection_select :proyecto_id, proyectos, :id, :nombre, :autofocus => true  %>
-</p>
-<%
-=end
-%>  
+
   <% personas = Persona.find(:all, :order => :nombre) %>
 <p>Persona: 
   <%= f.collection_select :persona_id, personas, :id, :nombre%>
@@ -41,3 +34,4 @@
     <%= f.submit 'Add'%>
   </div>
 <% end %>
+

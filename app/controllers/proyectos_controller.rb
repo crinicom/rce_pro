@@ -10,6 +10,7 @@ class ProyectosController < ApplicationController
   # GET /proyectos/1
   # GET /proyectos/1.json
   def show
+  @tiempo_tot = @proyecto.entradas.map {|e| e.tiempo}.sum
   end
 
   # GET /proyectos/new

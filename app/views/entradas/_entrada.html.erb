@@ -1,11 +1,15 @@
 <%= div_for entrada do %>
-<h3>
-<%= entrada.persona_id %> &lt;<%= entrada.persona_id %>&gt; said:
+<h5><hr>
+<% persona = Persona.find(entrada.persona_id)%>
+<% tipo = TipoEntrada.find(entrada.tipo_entrada_id)%>
+
+<%= persona.nombre %> &lt;<%= entrada.created_at %>&gt; <%= tipo.nombre %>
+
 <span class='actions'>
 <%= link_to 'Delete', proyecto_entrada_path(:proyecto_id => @proyecto,
 :id => entrada), confirm: 'Are you sure?', method: :delete %>
 </span>
-</h3>
+</h5>
 <%= entrada.comentario %>
 <%= entrada.tiempo %>
 <% end %>

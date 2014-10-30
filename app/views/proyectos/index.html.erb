@@ -3,9 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Horas previstas</th>
+	  <th>Horas acumuladas</th>
     </tr>
   </thead>
 
@@ -15,6 +16,9 @@
         <td><%= proyecto.id %></td>
 		<td><%= proyecto.nombre %></td>
 		<td><%= proyecto.horas %></td>
+		<td><%= proyecto.entradas.map {|e| e.tiempo}.sum %></td>
+		<%ent = proyecto.entradas.last%>
+		<td><%= ent %></td>
 		<td><%= link_to 'Show', proyecto %></td>
         <td><%= link_to 'Edit', edit_proyecto_path(proyecto) %></td>
         <td><%= link_to 'Destroy', proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,6 +1,6 @@
 <%= div_for proyecto do %>
 <h3>
-<%= link_to proyecto.nombre, proyecto %>
+<%= proyecto.nombre%> Horas previstas: <%= proyecto.horas%>
 <span class='actions'>
 <%= link_to 'Edit', edit_proyecto_path(@proyecto) %> |
 <%= link_to 'Back', proyectos_path %>

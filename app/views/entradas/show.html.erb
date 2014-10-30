@@ -1,4 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_entrada_path(@entrada) %> |
-<%= link_to 'Back', entradas_path %>
+
+<p>
+  <b>Commenter:</b>
+  <%= @entrada.persona_id %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @entrada.comentario %>
+  <%= @entrada.tiempo %>
+</p>
+
+<!-- /posts/:post_id/comments/:id/edit -->
+<%= link_to 'Edit', edit_proyecto_entrada_path(@entrada.proyecto, @entrada) %> |
+<!-- /posts/:post_id/comments/ -->
+<%= link_to 'Back', proyecto_path(@entrada.proyecto) %>

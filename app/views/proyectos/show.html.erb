@@ -4,9 +4,12 @@
 <h3>Entradas</h3>
 <div id="entradas">
 <%= render @proyecto.entradas %>
-</div>
 
+</div>
+<h1>Tiempo Total: <%=@tiempo_tot%></h1>
 <%= render :file => 'entradas/new' %>
+
+
 
 <p id="notice"><%= notice %></p>
 
