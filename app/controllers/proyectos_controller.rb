@@ -5,6 +5,7 @@ class ProyectosController < ApplicationController
   # GET /proyectos.json
   def index
     @proyectos = Proyecto.all
+	@personas = Persona.all
   end
 
   # GET /proyectos/1
@@ -66,6 +67,7 @@ class ProyectosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_proyecto
       @proyecto = Proyecto.find(params[:id])
+	  
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

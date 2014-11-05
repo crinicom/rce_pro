@@ -5,20 +5,26 @@
     <tr>
       <th>ID</th>
       <th>Nombre</th>
-      <th>Horas previstas</th>
-	  <th>Horas acumuladas</th>
+      <th>Hs previstas</th>
+	  <th>Hs acumuladas</th>
+	  <th>Último comentario</th>
+	  <th>Usuario</th>
+	  <th>Timestamp</th>
     </tr>
   </thead>
 
   <tbody>
     <% @proyectos.each do |proyecto| %>
-      <tr>
+      
+	  <tr>
         <td><%= proyecto.id %></td>
 		<td><%= proyecto.nombre %></td>
 		<td><%= proyecto.horas %></td>
 		<td><%= proyecto.entradas.map {|e| e.tiempo}.sum %></td>
-		<%ent = proyecto.entradas.last%>
-		<td><%= ent %></td>
+		<% ent= proyecto.entradas.last %>
+		<td><%= ent.comentario%></td>
+		<td><%= @personas.find(ent.persona_id).nombre%></td>
+		<td><%= ent.created_at %></td>
 		<td><%= link_to 'Show', proyecto %></td>
         <td><%= link_to 'Edit', edit_proyecto_path(proyecto) %></td>
         <td><%= link_to 'Destroy', proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
