@@ -1,13 +1,15 @@
 
 <%= render @proyecto %>
-
+<hr>
+<%= render :file => 'entradas/new' %>
+<h1>Tiempo Total: <%=@tiempo_tot%></h1>
+<hr>
 <h3>Entradas</h3>
 <div id="entradas">
-<%= render @proyecto.entradas %>
-
+<%= render @proyecto.entradas.order('created_at DESC') %>
 </div>
-<h1>Tiempo Total: <%=@tiempo_tot%></h1>
-<%= render :file => 'entradas/new' %>
+
+
 
 
 

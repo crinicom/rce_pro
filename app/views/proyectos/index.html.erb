@@ -7,6 +7,7 @@
       <th>Nombre</th>
       <th>Hs previstas</th>
 	  <th>Hs acumuladas</th>
+	  <th>Responsable</th>
 	  <th>Último comentario</th>
 	  <th>Usuario</th>
 	  <th>Timestamp</th>
@@ -15,12 +16,13 @@
 
   <tbody>
     <% @proyectos.each do |proyecto| %>
-      
+      <% responsable = @personas.find(participante.proyecto.persona_id) %>
 	  <tr>
         <td><%= proyecto.id %></td>
 		<td><%= proyecto.nombre %></td>
 		<td><%= proyecto.horas %></td>
 		<td><%= proyecto.entradas.map {|e| e.tiempo}.sum %></td>
+		<td><%= responsable.nombre %></td>
 		<% ent= proyecto.entradas.last %>
 		<td><%= ent.comentario%></td>
 		<td><%= @personas.find(ent.persona_id).nombre%></td>
@@ -28,6 +30,8 @@
 		<td><%= link_to 'Show', proyecto %></td>
         <td><%= link_to 'Edit', edit_proyecto_path(proyecto) %></td>
         <td><%= link_to 'Destroy', proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<td><%= link_to 'New Entrada', new_proyecto_entrada_path(proyecto) %></td>
+		
       </tr>
     <% end %>
   </tbody>

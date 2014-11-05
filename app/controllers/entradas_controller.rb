@@ -31,9 +31,10 @@ class EntradasController < ApplicationController
   # GET /entradas/new
   def new
     #@entrada = Entrada.new
-	proyecto = Proyecto.find(params[:proyecto_id])
+	
+	@proyecto = Proyecto.find(params[:proyecto_id])
   
-	@entrada = proyecto.entradas.build
+	@entrada = @proyecto.entradas.build
 	
 	respond_to do |format|
 		format.html #index.html.erb
@@ -58,7 +59,8 @@ class EntradasController < ApplicationController
 	
     respond_to do |format|
       if @entrada.save
-        format.html { redirect_to [@entrada.proyecto, @entrada], notice: 'Entrada was successfully created.' }
+        #format.html { redirect_to [@entrada.proyecto, @entrada], notice: 'Entrada was successfully created.' }
+		format.html { redirect_to proyecto_url(params[:proyecto_id]), notice: 'Entrada was successfully created.' }
         format.json { render action: 'show', status: :created, location: [@entrada.proyecto,@entrada] }
       else
         format.html { render action: 'new' }

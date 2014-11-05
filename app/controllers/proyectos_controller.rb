@@ -6,6 +6,8 @@ class ProyectosController < ApplicationController
   def index
     @proyectos = Proyecto.all
 	@personas = Persona.all
+	@participantes = Participante.all
+	@roles = Rol.all
   end
 
   # GET /proyectos/1

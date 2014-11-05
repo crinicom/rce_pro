@@ -1,25 +1,31 @@
-<h1>Listing entradas</h1>
+ <% proyectos = Proyecto.all %>
+  <% personas = Persona.all %>
+  <% t_entrada = TipoEntrada.all %>
+
+<h1>Entradas para Proyecto: "<%= proyectos.find(@entradas[1].proyecto_id).nombre %>"</h1>
 
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>ID Entrada</th>
+      <th>Tipo</th>
+      <th>Fecha y hora</th>
+	   <th>Usuario</th>
+		<th>Comentario</th>
+		<th>Tiempo</th>
     </tr>
   </thead>
 
-  <% proyectos = Proyecto.all %>
-  <% personas = Persona.all %>
-  <% t_entrada = TipoEntrada.all %>
+ 
 	
   <tbody>
     <% @entradas.each do |entrada| %>
       <tr>
-		<td><%= proyectos.find(entrada.proyecto_id).nombre %></td>
+		<td><%= entrada.id %></td>
+		<td><%= t_entrada.find(entrada.tipo_entrada_id).nombre %></td>
 		<td><%= entrada.fecha_creacion %></td>
 		<td><%= personas.find(entrada.persona_id).nombre %></td>
-		<td><%= t_entrada.find(entrada.tipo_entrada_id).nombre %></td>
+		
 		<td><%= entrada.comentario %></td>
 		<td><%= entrada.tiempo %></td>
         <td><%= link_to 'Show', [entrada.proyecto, entrada ]%></td>
