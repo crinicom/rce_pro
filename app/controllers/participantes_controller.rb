@@ -15,6 +15,7 @@ class ParticipantesController < ApplicationController
   # GET /participantes/new
   def new
     @participante = Participante.new
+	@personas = Persona.all
   end
 
   # GET /participantes/1/edit
@@ -25,10 +26,10 @@ class ParticipantesController < ApplicationController
   # POST /participantes.json
   def create
     @participante = Participante.new(participante_params)
-
+	#proyecto = Proyecto.find(params[:proyecto_id])
     respond_to do |format|
       if @participante.save
-        format.html { redirect_to @participante, notice: 'Participante was successfully created.' }
+        format.html { redirect_to proyecto_url(participante_params[:proyecto_id]), notice: 'Participante was successfully created.' }
         format.json { render action: 'show', status: :created, location: @participante }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class ParticipantesController < ApplicationController
   def update
     respond_to do |format|
       if @participante.update(participante_params)
-        format.html { redirect_to @participante, notice: 'Participante was successfully updated.' }
+        format.html { redirect_to proyecto_url(params[:proyecto_id]), notice: 'Participante was successfully updated. #{params[:proyecto_id]}' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +57,7 @@ class ParticipantesController < ApplicationController
   def destroy
     @participante.destroy
     respond_to do |format|
-      format.html { redirect_to participantes_url }
+      format.html { redirect_to proyecto_url(params[:proyecto_id]) }
       format.json { head :no_content }
     end
   end
@@ -64,7 +65,8 @@ class ParticipantesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_participante
-      @participante = Participante.find(params[:id])
+		#proyecto = Proyecto.find(params[:proyecto_id])
+		@participante = Participante.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

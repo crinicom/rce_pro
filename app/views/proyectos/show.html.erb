@@ -6,9 +6,43 @@
 <hr>
 
 <h3>Participantes</h3>
-<div id="entradas">
-<%= render @participantes %>
-<%= render :file => 'participantes/new' %>
+<div id="participantes">
+<h3>Participantes</h3>
+<div id="participantes">
+<%= render @proyecto.participantes.order('created_at DESC') %>
+</div>
+ 
+<%= form_for @proyecto.participantes.new do |participantes_form| %> 
+ <ul>
+   
+      <li>
+       	
+        <% personas = Persona.find(:all, :order => :nombre) %>
+		<p>Persona: 
+		<%= participantes_form.collection_select :persona_id, personas, :id, :nombre %>
+		
+		</p>
+ 
+		
+		<p>Proyecto:
+		<% pro = Proyecto.all%>
+		<%= participantes_form.collection_select :proyecto_id, pro, :id, :nombre %>
+		</p>
+  
+		<% roles = Rol.find(:all, :order => :nombre) %>
+		<p>Rol en este proyecto:
+		<%= participantes_form.collection_select :rol_id, roles, :id, :nombre %>
+		</p>
+  
+  <div class="actions">
+    <%= participantes_form.submit "Create"%>
+  </div>
+      </li>
+    
+  </ul>
+    <% end %>
+
+<%#= render :file => 'participantes/new' %>
 </div>
 
 <h3>Entradas</h3>
