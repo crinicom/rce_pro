@@ -16,13 +16,16 @@
 
   <tbody>
     <% @proyectos.each do |proyecto| %>
-      <% responsable = @personas.find(participante.proyecto.persona_id) %>
+	<% parts = @participantes.find_by(proyecto_id: proyecto, rol_id: 2)%>
+	
+      <% responsable = @personas.find_by_id(parts.persona_id) unless parts.nil? %>
+	  
 	  <tr>
         <td><%= proyecto.id %></td>
 		<td><%= proyecto.nombre %></td>
 		<td><%= proyecto.horas %></td>
 		<td><%= proyecto.entradas.map {|e| e.tiempo}.sum %></td>
-		<td><%= responsable.nombre %></td>
+		<td><%= !responsable.nil? ? responsable.nombre : (link_to 'Participantes', participantes_path) %></td>
 		<% ent= proyecto.entradas.last %>
 		<td><%= ent.comentario%></td>
 		<td><%= @personas.find(ent.persona_id).nombre%></td>

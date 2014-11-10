@@ -1,5 +1,7 @@
 <%= form_for(@participante) do |f| %>
-  <% if @participante.errors.any? %>
+<%#= form_for([@proyecto, @proyecto.participante.new]) do |f| %>
+ 
+ <% if @participante.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@participante.errors.count, "error") %> prohibited this participante from being saved:</h2>
 
@@ -11,6 +13,7 @@
     </div>
   <% end %>
 
+  
   <% personas = Persona.find(:all, :order => :nombre) %>
 <p>Persona: 
   <%= f.collection_select :persona_id, personas, :id, :nombre %>

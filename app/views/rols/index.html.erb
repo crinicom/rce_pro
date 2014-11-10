@@ -12,6 +12,7 @@
   <tbody>
     <% @rols.each do |rol| %>
       <tr>
+		<td><%= rol.id %></td>
 		<td><%= rol.nombre %></td>
 		<td><%= rol.descripcion %></td>
         <td><%= link_to 'Show', rol %></td>

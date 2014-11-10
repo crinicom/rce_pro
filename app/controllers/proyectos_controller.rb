@@ -14,6 +14,7 @@ class ProyectosController < ApplicationController
   # GET /proyectos/1.json
   def show
   @tiempo_tot = @proyecto.entradas.map {|e| e.tiempo}.sum
+  @participantes = Participante.find_by(proyecto_id: params[:id])
   end
 
   # GET /proyectos/new
