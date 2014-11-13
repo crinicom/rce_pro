@@ -3,7 +3,7 @@
 <% persona = Persona.find(entrada.persona_id)%>
 <% tipo = TipoEntrada.find(entrada.tipo_entrada_id)%>
 
-<%= persona.nombre %> &lt;<%= entrada.created_at %>&gt; <%= tipo.nombre %>
+<strong><%= persona.nombre %> </strong>&lt;<%= entrada.created_at %>&gt; <%= tipo.nombre %>
 
 <span class='actions'>
 <%= link_to 'Delete', proyecto_entrada_path(:proyecto_id => @proyecto,
@@ -11,5 +11,6 @@
 </span>
 </h5>
 <%= entrada.comentario %>
-<%= entrada.tiempo %>
+<p>Tiempo: <%= entrada.tiempo %></p>
+
 <% end %>

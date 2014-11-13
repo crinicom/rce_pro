@@ -1,60 +1,163 @@
 
-<%= render @proyecto %>
-<hr>
-<%= render :file => 'entradas/new' %>
-<h1>Tiempo Total: <%=@tiempo_tot%></h1>
-<hr>
 
-<h3>Participantes</h3>
-<div id="participantes">
-<h3>Participantes</h3>
-<div id="participantes">
-<%= render @proyecto.participantes.order('created_at DESC') %>
-</div>
+
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-6 column">
+			<h2><%= @proyecto.nombre %> </h2>
+			<h3>Horas previstas: <%= @proyecto.horas %></h3> 
+			<%= link_to 'Editar', edit_proyecto_path(@proyecto), :class => "btn btn-success align-center" %> |
+			<%= link_to 'Volver', proyectos_path, :class => "btn btn-success align-center" %>
+		</div>
+		<div class="col-md-4 column">
+			<h3>
+				h3. Lorem ipsum dolor sit amet.
+			</h3>
+		</div>
+		<div class="col-md-2 column">
+			<h3>
+				h3. Lorem ipsum dolor sit amet.
+			</h3><img alt="140x140" src="http://lorempixel.com/140/140/">
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			
+			<h3>Descripción</h3>
+				<div id="entradas">
+				<%= render @proyecto.entradas.find_by(tipo_entrada_id: 01) %>
+				</div>
+			
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+			<hr>
+				<h3>Entradas - Tiempo Acumulado: <%=@tiempo_tot%></h3>
+				<div id="entradas">
+				<%= render @proyecto.entradas.order('created_at DESC') %>
+				</div>
+				
+				
+				<hr>
+				
+
+		</div>
+		<div class="col-md-4 column">
+		<hr>
+				<div id="nueva_entrada">
+				<%= render :file => 'entradas/new' %>
+				</div>
+				
+				<h3>Participantes: <%=@proyecto.participantes.count%></h3>
+				<p id="notice"><%= notice %></p>
+				<div id="participantes">
+				<%= render @proyecto.participantes.order('created_at DESC') %>
+				</div>
+
+			<div id="participantes">
+			<h3>Nuevo participante</h3>
+			<%= form_for @proyecto.participantes.new do |participantes_form| %> 
+			<ul>
+				<li>
+			
+					<% personas = Persona.find(:all, :order => :nombre) %>
+					<p>Persona: 
+					<%= participantes_form.collection_select :persona_id, personas, :id, :nombre %>
+					
+					</p>
+				</li>
  
-<%= form_for @proyecto.participantes.new do |participantes_form| %> 
- <ul>
-   
-      <li>
-       	
-        <% personas = Persona.find(:all, :order => :nombre) %>
-		<p>Persona: 
-		<%= participantes_form.collection_select :persona_id, personas, :id, :nombre %>
+				<li>
 		
-		</p>
- 
-		
-		<p>Proyecto:
-		<% pro = Proyecto.all%>
-		<%= participantes_form.collection_select :proyecto_id, pro, :id, :nombre %>
-		</p>
-  
-		<% roles = Rol.find(:all, :order => :nombre) %>
-		<p>Rol en este proyecto:
-		<%= participantes_form.collection_select :rol_id, roles, :id, :nombre %>
-		</p>
-  
-  <div class="actions">
-    <%= participantes_form.submit "Create"%>
-  </div>
-      </li>
-    
-  </ul>
+					<p>Proyecto:
+					<% pro = Proyecto.all%>
+					<%= participantes_form.collection_select :proyecto_id, pro, :id, :nombre %>
+					</p>
+				</li>
+				<li>
+	  
+				<% roles = Rol.find(:all, :order => :nombre) %>
+				<p>Rol en este proyecto:
+				<%= participantes_form.collection_select :rol_id, roles, :id, :nombre %>
+				</p>
+				</li>
+			</ul>
+		  <div class="actions">
+			<%= participantes_form.submit "Asignar participante", :class => "btn btn-success align-center"%>
+		  </div>
+			
     <% end %>
 
 <%#= render :file => 'participantes/new' %>
 </div>
-
-<h3>Entradas</h3>
-<div id="entradas">
-<%= render @proyecto.entradas.order('created_at DESC') %>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+			<ol>
+				<li>
+					Lorem ipsum dolor sit amet
+				</li>
+				<li>
+					Consectetur adipiscing elit
+				</li>
+				<li>
+					Integer molestie lorem at massa
+				</li>
+				<li>
+					Facilisis in pretium nisl aliquet
+				</li>
+				<li>
+					Nulla volutpat aliquam velit
+				</li>
+				<li>
+					Faucibus porta lacus fringilla vel
+				</li>
+				<li>
+					Aenean sit amet erat nunc
+				</li>
+				<li>
+					Eget porttitor lorem
+				</li>
+			</ol>
+			
+		</div>
+		<div class="col-md-4 column">
+			<dl>
+				<dt>
+					Description lists
+				</dt>
+				<dd>
+					A description list is perfect for defining terms.
+				</dd>
+				<dt>
+					Euismod
+				</dt>
+				<dd>
+					Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+				</dd>
+				<dd>
+					Donec id elit non mi porta gravida at eget metus.
+				</dd>
+				<dt>
+					Malesuada porta
+				</dt>
+				<dd>
+					Etiam porta sem malesuada magna mollis euismod.
+				</dd>
+				<dt>
+					Felis euismod semper eget lacinia
+				</dt>
+				<dd>
+					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+				</dd>
+			</dl>
+		</div>
+	</div>
 </div>
+</body>
 
 
 
-
-
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_proyecto_path(@proyecto) %> |
-<%= link_to 'Back', proyectos_path %>

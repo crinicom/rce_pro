@@ -6,7 +6,8 @@
 <%= link_to persona.nombre , edit_participante_path(participante) %>  <%= rol.nombre %>
 
 <span class='actions'>
-<%= link_to 'Delete', participante_path(participante), confirm: 'Are you sure?', method: :delete %>
+<%#= link_to 'X', participante_path(participante), confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger align-center" %>
+<%= link_to 'X', participante_path(participante), confirm: 'Are you sure?', method: :delete,:class => "btn btn-mini btn-primary" %>
 
 </span>
 </p>

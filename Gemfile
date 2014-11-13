@@ -45,3 +45,6 @@ gem 'seed_dump'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'bootstrap-sass'
+gem 'bootstrap'

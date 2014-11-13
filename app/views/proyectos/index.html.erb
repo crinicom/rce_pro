@@ -22,18 +22,18 @@
 	  
 	  <tr>
         <td><%= proyecto.id %></td>
-		<td><%= proyecto.nombre %></td>
+		<td><%= link_to proyecto.nombre, proyecto %></td>
 		<td><%= proyecto.horas %></td>
 		<td><%= proyecto.entradas.map {|e| e.tiempo}.sum %></td>
-		<td><%= !responsable.nil? ? responsable.nombre : (link_to 'Participantes', participantes_path) %></td>
+		<td><%= !responsable.nil? ? responsable.nombre : (link_to 'Participantes', proyecto) %></td>
 		<% ent= proyecto.entradas.last %>
-		<td><%= ent.comentario%></td>
-		<td><%= @personas.find(ent.persona_id).nombre%></td>
-		<td><%= ent.created_at %></td>
-		<td><%= link_to 'Show', proyecto %></td>
-        <td><%= link_to 'Edit', edit_proyecto_path(proyecto) %></td>
-        <td><%= link_to 'Destroy', proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<td><%= link_to 'New Entrada', new_proyecto_entrada_path(proyecto) %></td>
+		<td><%= !ent.nil? ? ent.comentario : (link_to "Ingresar comentarios", edit_proyecto_path(proyecto))%> <%=link_to '(+)', new_proyecto_entrada_path(proyecto)%></td>
+		<td><%= !ent.nil? ? @personas.find(ent.persona_id).nombre : ""%></td>
+		<td><%= !ent.nil? ? ent.created_at : "" %></td>
+		<td><%= link_to 'Editar', proyecto %></td>
+        <td><%= link_to 'Renombrar Proyecto', edit_proyecto_path(proyecto) %></td>
+        <td><%= link_to 'Eliminar', proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<td><%= link_to 'Nueva Entrada', new_proyecto_entrada_path(proyecto) %></td>
 		
       </tr>
     <% end %>
