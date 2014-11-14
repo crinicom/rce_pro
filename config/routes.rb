@@ -27,6 +27,7 @@ RCEPro::Application.routes.draw do
 	 resources :rols
 	 resources :tipo_entradas
 	 resources :estados
+	 resources :tickets
 
   # Example resource route with options:
   #   resources :products do
