@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comment: MyText
+  reference1: MyString
+  reference2: MyString
+  reference3: MyString
+  user: MyString
+  mail: MyString
+  status: 1
+
+two:
+  comment: MyText
+  reference1: MyString
+  reference2: MyString
+  reference3: MyString
+  user: MyString
+  mail: MyString
+  status: 1
