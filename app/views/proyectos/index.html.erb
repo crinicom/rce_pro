@@ -1,45 +1,197 @@
-<h1>Listing proyectos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Hs previstas</th>
-	  <th>Hs acumuladas</th>
-	  <th>Responsable</th>
-	  <th>Último comentario</th>
-	  <th>Usuario</th>
-	  <th>Timestamp</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @proyectos.each do |proyecto| %>
-	<% parts = @participantes.find_by(proyecto_id: proyecto, rol_id: 2)%>
-	
-      <% responsable = @personas.find_by_id(parts.persona_id) unless parts.nil? %>
-	  
-	  <tr>
-        <td><%= proyecto.id %></td>
-		<td><%= link_to proyecto.nombre, proyecto %></td>
-		<td><%= proyecto.horas %></td>
-		<td><%= proyecto.entradas.map {|e| e.tiempo}.sum %></td>
-		<td><%= !responsable.nil? ? responsable.nombre : (link_to 'Participantes', proyecto) %></td>
-		<% ent= proyecto.entradas.last %>
-		<td><%= !ent.nil? ? ent.comentario : (link_to "Ingresar comentarios", edit_proyecto_path(proyecto))%> <%=link_to '(+)', new_proyecto_entrada_path(proyecto)%></td>
-		<td><%= !ent.nil? ? @personas.find(ent.persona_id).nombre : ""%></td>
-		<td><%= !ent.nil? ? ent.created_at : "" %></td>
-		<td><%= link_to 'Editar', proyecto %></td>
-        <td><%= link_to 'Renombrar Proyecto', edit_proyecto_path(proyecto) %></td>
-        <td><%= link_to 'Eliminar', proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<td><%= link_to 'Nueva Entrada', new_proyecto_entrada_path(proyecto) %></td>
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-6 column">
+			
+			<h1>Bienvenido!!</h3> 
+			
+		</div>
+		<div class="col-md-4 column">
+			<h3>
+				h3. Lorem ipsum dolor sit amet.
+			</h3>
+		</div>
+		<div class="col-md-2 column">
+			<h3>
+				h3. Lorem ipsum dolor sit amet.
+			</h3><img alt="140x140" src="http://lorempixel.com/140/140/">
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			
+				<h1>Listing proyectos</h1>
+
+				<table>
+				  <thead>
+					<tr>
+					  <th>ID</th>
+					  <th>Nombre Proyecto</th>
+					  <th>Hs prev.</th>
+					  <th>Hs acum.</th>
+					  <th>Responsable</th>
+					  <th>Último comentario</th>
+					  <th>Usuario</th>
+					  <th>Timestamp</th>
+					  
+					</tr>
+				  </thead>
+
+				  <tbody>
+					<% @proyectos.each do |proyecto| %>
+					<% parts = @participantes.find_by(proyecto_id: proyecto, rol_id: 2)%>
+					
+					  <% responsable = @personas.find_by_id(parts.persona_id) unless parts.nil? %>
+					  
+					  <tr>
+						<td><%= proyecto.id %></td>
+						<td><%= link_to proyecto.nombre, proyecto %></td>
+						<td><%= proyecto.horas %></td>
+						<td><%= proyecto.entradas.map {|e| e.tiempo}.sum %></td>
+						<td><%= !responsable.nil? ? responsable.nombre : (link_to 'Participantes', proyecto) %></td>
+						<% ent= proyecto.entradas.last %>
+						<td><%= !ent.nil? ? ent.comentario : (link_to "Ingresar comentarios", new_proyecto_entrada_path(proyecto))%> <%=link_to '+', new_proyecto_entrada_path(proyecto), :class => "btn btn-primary btn-xs"%></td>
+						<td><%= !ent.nil? ? @personas.find(ent.persona_id).nombre : ""%></td>
+						<td><%= !ent.nil? ? ent.created_at : "" %></td>
+						
+						<td></td>
+						<td></td>
+						<td></td>
+						
+					  </tr>
+					<% end %>
+				  </tbody>
+				</table>
+
+				<br>
+
+				<%= link_to ' + Nuevo Proyecto', new_proyecto_path, :class => "btn btn-success align-center"  %>	
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+			<hr>
+				<h3>Últimas Entradas<%=@tiempo_tot%></h3>
+				<div id="entradas">
+				
+				
+				<% @entradas.order('created_at DESC').take(3).each do |ent| %>
+				<p>
+				<%=  !ent.nil? ? (render ent) : nil %>
+				<%=  "Para proyecto: #{@proyectos.find(ent.proyecto_id).nombre}" %>
+				<%#=  !proyecto.entradas.empty? ? "Para proyecto #{ent.nombre}" : nil %>
+				</p>
+				<% end %>
+				
+				
+				
+				
+				</div>
+				
+				
+				<hr>
+				
+
+		</div>
+		<div class="col-md-4 column">
+		<hr>
 		
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+		</div>
+		</div>
+	
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+			<ol>
+				<li>
+					Lorem ipsum dolor sit amet
+				</li>
+				<li>
+					Consectetur adipiscing elit
+				</li>
+				<li>
+					Integer molestie lorem at massa
+				</li>
+				<li>
+					Facilisis in pretium nisl aliquet
+				</li>
+				<li>
+					Nulla volutpat aliquam velit
+				</li>
+				<li>
+					Faucibus porta lacus fringilla vel
+				</li>
+				<li>
+					Aenean sit amet erat nunc
+				</li>
+				<li>
+					Eget porttitor lorem
+				</li>
+			</ol>
+			
+		</div>
+		<div class="col-md-4 column">
+			<dl>
+				<dt>
+					Description lists
+				</dt>
+				<dd>
+					A description list is perfect for defining terms.
+				</dd>
+				<dt>
+					Euismod
+				</dt>
+				<dd>
+					Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+				</dd>
+				<dd>
+					Donec id elit non mi porta gravida at eget metus.
+				</dd>
+				<dt>
+					Malesuada porta
+				</dt>
+				<dd>
+					Etiam porta sem malesuada magna mollis euismod.
+				</dd>
+				<dt>
+					Felis euismod semper eget lacinia
+				</dt>
+				<dd>
+					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+</body>
 
-<br>
 
-<%= link_to 'New Proyecto', new_proyecto_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////---------------------------------
+
+

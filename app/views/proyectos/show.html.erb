@@ -9,6 +9,7 @@
 			<h3>Horas previstas: <%= @proyecto.horas %></h3> 
 			<%= link_to 'Editar', edit_proyecto_path(@proyecto), :class => "btn btn-success align-center" %> |
 			<%= link_to 'Volver', proyectos_path, :class => "btn btn-success align-center" %>
+			<%= link_to 'Eliminar', @proyecto, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger align-center" %> - 
 		</div>
 		<div class="col-md-4 column">
 			<h3>
@@ -26,7 +27,9 @@
 			
 			<h3>Descripción</h3>
 				<div id="entradas">
-				<%= render @proyecto.entradas.find_by(tipo_entrada_id: 01) %>
+				<%= !@proyecto.entradas.find_by(tipo_entrada_id: 01).nil? ? ( render @proyecto.entradas.find_by(tipo_entrada_id: 01)) : "--DESCRIPCION PENDIENTE--" %>
+				
+				
 				</div>
 			
 		</div>

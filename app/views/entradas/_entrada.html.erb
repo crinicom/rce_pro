@@ -6,8 +6,8 @@
 <strong><%= persona.nombre %> </strong>&lt;<%= entrada.created_at %>&gt; <%= tipo.nombre %>
 
 <span class='actions'>
-<%= link_to 'Delete', proyecto_entrada_path(:proyecto_id => @proyecto,
-:id => entrada), confirm: 'Are you sure?', method: :delete %>
+<%= !@proyecto.nil? ? (link_to 'Delete', proyecto_entrada_path(:proyecto_id => @proyecto,
+:id => entrada), confirm: 'Are you sure?', method: :delete) : "" %>
 </span>
 </h5>
 <%= entrada.comentario %>

@@ -8,6 +8,7 @@ class ProyectosController < ApplicationController
 	@personas = Persona.all
 	@participantes = Participante.all
 	@roles = Rol.all
+	@entradas = Entrada.all
   end
 
   # GET /proyectos/1
