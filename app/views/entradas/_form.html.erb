@@ -5,9 +5,9 @@
   <%= f.collection_select :proyecto_id, proyectos, :id, :nombre, :autofocus => true  %>
 </p>
   
-  <% personas = Persona.find(:all, :order => :nombre) %>
+  <% personas = User.find(:all, :order => :nombre) %>
 <p>Persona: 
-  <%= f.collection_select :persona_id, personas, :id, :nombre%>
+  <%= f.collection_select :persona_id, personas, :id, :name%>
 </p>
   
   <% entradas_tipos = TipoEntrada.find(:all, :order => :nombre) %>

@@ -24,9 +24,10 @@
 				<%= form_for([@proyecto, @proyecto.entradas.new]) do |f| %>
 
 
-					  <% personas = Persona.find(:all, :order => :nombre) %>
+					  <% personas = User.find(:all, :order => :name) %>
 					<p>Persona: 
-					  <%= f.collection_select :persona_id, personas, :id, :nombre%>
+					  <%#= @proyecto.entradas.persona_id = current_user.uid%>
+					  <%= f.collection_select :persona_id, personas, :id, :name%>
 					</p>
 					  
 					  <% entradas_tipos = TipoEntrada.find(:all, :order => :nombre) %>
