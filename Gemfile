@@ -48,3 +48,4 @@ gem 'seed_dump'
 
 gem 'bootstrap-sass'
 gem 'bootstrap'
+gem "omniauth-google-oauth2", "~> 0.2.1"

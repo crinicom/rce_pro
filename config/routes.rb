@@ -1,4 +1,6 @@
 RCEPro::Application.routes.draw do
+  #get "sessions/create"
+  #get "sessions/destroy"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -28,6 +30,12 @@ RCEPro::Application.routes.draw do
 	 resources :tipo_entradas
 	 resources :estados
 	 resources :tickets
+	get 'auth/:provider/callback', to: 'sessions#create'
+	get 'auth/failure', to: redirect('/')
+	get 'signout', to: 'sessions#destroy', as: 'signout'
+
+	resources :sessions, only: [:create, :destroy]
+	resource :home, only: [:show]
 
   # Example resource route with options:
   #   resources :products do
