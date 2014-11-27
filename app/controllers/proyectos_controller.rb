@@ -5,7 +5,7 @@ class ProyectosController < ApplicationController
   # GET /proyectos.json
   def index
     @proyectos = Proyecto.all
-	@personas = Persona.all
+	@personas = User.all
 	@participantes = Participante.all
 	@roles = Rol.all
 	@entradas = Entrada.all

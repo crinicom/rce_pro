@@ -65,9 +65,9 @@
 			<ul>
 				<li>
 			
-					<% personas = Persona.find(:all, :order => :nombre) %>
+					<% !User.find(:all, :order => :name).nil? ? personas = User.find(:all, :order => :name) : "" %>
 					<p>Persona: 
-					<%= participantes_form.collection_select :persona_id, personas, :id, :nombre %>
+					<%= participantes_form.collection_select :persona_id, personas, :id, :name %>
 					
 					</p>
 				</li>

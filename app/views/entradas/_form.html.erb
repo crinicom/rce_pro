@@ -7,8 +7,10 @@
   
   <% personas = User.find(:all, :order => :nombre) %>
 <p>Persona: 
-  <%= f.collection_select :persona_id, personas, :id, :name%>
-</p>
+  <%#= f.collection_select :persona_id, personas, :id, :name%>
+  <%#= params[:entrada] = {:persona_id => current_user.uid %>
+  <%= f.hidden_field_tag(:persona_id, current_user.uid) %>
+  </p>
   
   <% entradas_tipos = TipoEntrada.find(:all, :order => :nombre) %>
 <p>Tipo de entrada: 

@@ -33,7 +33,7 @@ class EntradasController < ApplicationController
     #@entrada = Entrada.new
 	
 	@proyecto = Proyecto.find(params[:proyecto_id])
-  
+    #params[:persona_id] = @creador
 	@entrada = @proyecto.entradas.build
 	
 	respond_to do |format|
@@ -54,6 +54,7 @@ class EntradasController < ApplicationController
   def create
     # original: @entrada = Entrada.new(entrada_params)
 	proyecto = Proyecto.find(params[:proyecto_id])
+	#params[:persona_id] = @creador
 	@entrada = proyecto.entradas.create(entrada_params)
 
 	
@@ -106,6 +107,7 @@ class EntradasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_entrada
       @entrada = Entrada.find(params[:id])
+	  @creador = ""
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

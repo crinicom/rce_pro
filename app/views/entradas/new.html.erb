@@ -20,14 +20,18 @@
 		<div class="row clearfix">
 			<div class="col-md-12 column">
 				
-			
+			<% @creador = current_user.uid%>
+			<%= params[:persona_id]%>
 				<%= form_for([@proyecto, @proyecto.entradas.new]) do |f| %>
 
 
-					  <% personas = User.find(:all, :order => :name) %>
+					  <%# personas = User.find(current_user.uid) %>
+					<% personas = User.all %>
 					<p>Persona: 
-					  <%#= @proyecto.entradas.persona_id = current_user.uid%>
-					  <%= f.collection_select :persona_id, personas, :id, :name%>
+					  
+					  <%= f.hidden_field :persona_id, :value => current_user.id %>
+					  
+					  <%= current_user.name%>
 					</p>
 					  
 					  <% entradas_tipos = TipoEntrada.find(:all, :order => :nombre) %>
@@ -36,8 +40,10 @@
 					</p>
 					  
 					   <div class="field">
+					   
 						<%= f.label :fecha_creacion %><br>
-						<%= f.date_field :fecha_creacion, :default => "1010-01-01" %>
+						<%= f.date_field :fecha_creacion, :value => Time.now.strftime('%Y-%m-%d') %>
+						
 					  </div>
 
 					  <div class="field">
