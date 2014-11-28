@@ -21,9 +21,9 @@
     <%= f.text_area :descripcion %>
   </div>
   
-   <% personas = Persona.find(:all, :order => :nombre) %>
+   <% personas = User.find(:all, :order => :name) %>
 <p>Proyecto A: 
-  <%= f.collection_select :responsable_id, personas, :id, :nombre%>
+  <%= f.collection_select :responsable_id, personas, :id, :name%>
 </p>
   
   <div class="actions">

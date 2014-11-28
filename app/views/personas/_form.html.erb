@@ -31,9 +31,9 @@
   <%= f.collection_select :equipo_id, equipos, :id, :nombre %>
 </p>
   
-  <% jefes = Persona.find(:all, :order => :nombre) %>
+  <% jefes = User.find(:all, :order => :name) %>
 <p>Jefe: 
-  <%= f.collection_select :jefe_id, jefes, :id, :nombre %>
+  <%= f.collection_select :jefe_id, jefes, :id, :name %>
 </p>
    
   

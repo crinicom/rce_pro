@@ -54,7 +54,7 @@
 				</div>
 				
 				<h3>Participantes: <%=@proyecto.participantes.count%></h3>
-				<p id="notice"><%= notice %></p>
+				
 				<div id="participantes">
 				<%= render @proyecto.participantes.order('created_at DESC') %>
 				</div>

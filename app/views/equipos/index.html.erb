@@ -9,11 +9,11 @@
     </tr>
   </thead>
 
-  <% personas = Persona.all %>
+  <% personas = User.all %>
   <tbody>
     <% @equipos.each do |equipo| %>
       <tr>
-		<td><%= personas.find(equipo.responsable_id).nombre %></td>
+		<td><%= personas.find(equipo.responsable_id).name %></td>
 		<td><%= equipo.nombre %></td>
 		<td><%= equipo.descripcion %></td>
 		

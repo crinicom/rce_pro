@@ -1,9 +1,9 @@
 <%= div_for participante do %>
 <p>
-<% persona = Persona.find(participante.persona_id)%>
+<% persona = User.find(participante.persona_id)%>
 <% rol = Rol.find(participante.rol_id)%>
 
-<%= link_to persona.nombre , edit_participante_path(participante) %>  <%= rol.nombre %>
+<%= link_to persona.name , edit_participante_path(participante) %>  <%= rol.nombre %>
 
 <span class='actions'>
 <%#= link_to 'X', participante_path(participante), confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger align-center" %>

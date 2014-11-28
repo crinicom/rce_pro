@@ -15,7 +15,7 @@ class ParticipantesController < ApplicationController
   # GET /participantes/new
   def new
     @participante = Participante.new
-	@personas = Persona.all
+	@personas = User.all
   end
 
   # GET /participantes/1/edit

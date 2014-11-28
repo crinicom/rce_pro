@@ -14,9 +14,9 @@
   <% end %>
 
   
-  <% personas = Persona.find(:all, :order => :nombre) %>
+  <% personas = User.find(:all, :order => :name) %>
 <p>Persona: 
-  <%= f.collection_select :persona_id, personas, :id, :nombre %>
+  <%= f.collection_select :persona_id, personas, :id, :name %>
 </p>
  
  <% proyectos = Proyecto.find(:all, :order => :nombre) %>
