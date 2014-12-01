@@ -21,7 +21,9 @@
  
  <% proyectos = Proyecto.find(:all, :order => :nombre) %>
 <p>Proyecto:
-  <%= f.collection_select :proyecto_id, proyectos, :id, :nombre %>
+  <%#= f.collection_select :proyecto_id, proyectos, :id, :nombre %>
+  <%= f.hidden_field :proyecto_id, @proyecto.id %>
+  <%= @proyecto.nombre %>
 </p>
   
  <% roles = Rol.find(:all, :order => :nombre) %>

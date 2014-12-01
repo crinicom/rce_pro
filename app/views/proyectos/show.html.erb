@@ -75,9 +75,11 @@
 				<li>
 		
 					<p>Proyecto:
-					<% pro = Proyecto.all%>
-					<%= participantes_form.collection_select :proyecto_id, pro, :id, :nombre %>
-					</p>
+					<%# pro = Proyecto.all%>
+					<%#= participantes_form.collection_select :proyecto_id, pro, :id, :nombre %>
+					<%= participantes_form.hidden_field :proyecto_id, :value => @proyecto.id %>
+					<%= @proyecto.nombre %>
+					
 				</li>
 				<li>
 	  

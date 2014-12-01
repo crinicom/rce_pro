@@ -7,8 +7,7 @@
   
   <% personas = User.find(:all, :order => :nombre) %>
 <p>Persona: 
-  <%#= f.collection_select :persona_id, personas, :id, :name%>
-  <%#= params[:entrada] = {:persona_id => current_user.uid %>
+  
   <%= f.hidden_field_tag(:persona_id, current_user.uid) %>
   </p>
   
@@ -19,7 +18,9 @@
   
    <div class="field">
     <%= f.label :fecha_creacion %><br>
-    <%= f.date_field :fecha_creacion, :value => Date.today.to_s(:db)  %>
+    <%#= f.date_field :fecha_creacion, :value => Date.today.to_s(:db)  %>
+	<%= Date.today.to_s(:db) %>
+	<%= f.hidden_field_tag(:fecha_creacion, Date.today) %>
   </div>
 
   <div class="field">

@@ -6,16 +6,7 @@
 				<h1>Nueva Entrada para Proyecto: <%= @proyecto.nombre%></h1>
 				
 			</div>
-			<div class="col-md-4 column">
-				<h3>
-					h3. Lorem ipsum dolor sit amet.
-				</h3>
-			</div>
-			<div class="col-md-2 column">
-				<h3>
-					h3. Lorem ipsum dolor sit amet.
-				</h3><img alt="140x140" src="http://lorempixel.com/140/140/">
-			</div>
+			
 		</div>
 		<div class="row clearfix">
 			<div class="col-md-12 column">
@@ -42,7 +33,9 @@
 					   <div class="field">
 					   
 						<%= f.label :fecha_creacion %><br>
-						<%= f.date_field :fecha_creacion, :value => Time.now.strftime('%Y-%m-%d') %>
+						<%#= f.date_field :fecha_creacion, :value => Time.now.strftime('%Y-%m-%d') %>
+						<%= Date.today.to_s(:db) %>
+						<%= f.hidden_field :fecha_creacion, :value => Date.today %>
 						
 					  </div>
 
@@ -53,7 +46,8 @@
 					  
 					  <div class="field">
 						<%= f.label :tiempo %><br>
-						<%= f.number_field :tiempo%>
+						<%= f.hidden_field :tiempo, value: 0 %>
+						<%= f.number_field :tiempo, default: 0%>
 					  </div>
 					  
 					  <div class="actions">
