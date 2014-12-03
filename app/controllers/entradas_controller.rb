@@ -9,6 +9,9 @@ class EntradasController < ApplicationController
   
 	@entradas = proyecto.entradas
 	
+	#!@entradas.nil? ? @persona = User.find_by_id(@entrada.persona_id) : ""
+	#@tipo = TipoEntrada.find(@entrada.tipo_entrada_id)
+	
 	respond_to do |format|
 		format.html #index.html.erb
 		format.xml { render :xml => @entradas }
@@ -21,6 +24,9 @@ class EntradasController < ApplicationController
   proyecto = Proyecto.find(params[:proyecto_id])
   
 	@entrada = proyecto.entradas.find(params[:id])
+	
+	#!@entrada.nil? ? @persona = User.find_by_id(@entrada.persona_id) : ""
+	#@tipo = TipoEntrada.find(@entrada.tipo_entrada_id)
 	
 	respond_to do |format|
 		format.html #index.html.erb

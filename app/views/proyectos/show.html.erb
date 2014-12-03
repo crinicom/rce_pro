@@ -24,14 +24,15 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			
-			<h3>Descripción</h3>
-				<div id="entradas">
-				<%= !@proyecto.entradas.find_by(tipo_entrada_id: 01).nil? ? ( render @proyecto.entradas.find_by(tipo_entrada_id: 01)) : "--DESCRIPCION PENDIENTE--" %>
+			<div class="panel-body table-responsive">			
+				<h3>Descripción</h3>
+					<div id="entradas">
+					<%= !@proyecto.entradas.find_by(tipo_entrada_id: 01).nil? ? ( render @proyecto.entradas.find_by(tipo_entrada_id: 01)) : "--DESCRIPCION PENDIENTE--" %>
+					
+					
+					</div>
 				
-				
-				</div>
-			
+			</div>
 		</div>
 	</div>
 	<div class="row clearfix">

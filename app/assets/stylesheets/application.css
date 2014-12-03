@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+.table-nowrap {
+	table-layout:fixed;
+}
+
+.table-nowrap td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
