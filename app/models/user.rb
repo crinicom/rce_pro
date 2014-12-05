@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+  
+  def short_name
+	return self.name.split(' ')[0..1].join(' ')
+  end
 end

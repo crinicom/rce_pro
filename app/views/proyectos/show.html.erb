@@ -12,55 +12,75 @@
 			<%= link_to 'Eliminar', @proyecto, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger align-center" %> - 
 		</div>
 		<div class="col-md-4 column">
-			<h3>
-				h3. Lorem ipsum dolor sit amet.
-			</h3>
+			
 		</div>
 		<div class="col-md-2 column">
 			<h3>
-				h3. Lorem ipsum dolor sit amet.
-			</h3><img alt="140x140" src="http://lorempixel.com/140/140/">
+				
+			</h3>
 		</div>
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			<div class="panel-body table-responsive">			
-				<h3>Descripción</h3>
-					<div id="entradas">
-					<%= !@proyecto.entradas.find_by(tipo_entrada_id: 01).nil? ? ( render @proyecto.entradas.find_by(tipo_entrada_id: 01)) : "--DESCRIPCION PENDIENTE--" %>
-					
-					
-					</div>
-				
+			<div class="panel panel-default">
+			
+				<div class="panel-body table-responsive">			
+					<h3>Descripción</h3>
+						<div id="entradas">
+						<%= !@proyecto.entradas.where(tipo_entrada_id: 01).nil? ? ( render @proyecto.entradas.where(tipo_entrada_id: 01).order('created_at DESC')) : "--DESCRIPCION PENDIENTE--" %>
+						
+						
+						</div>
+				</div>					
 			</div>
 		</div>
 	</div>
 	<div class="row clearfix">
+		
 		<div class="col-md-8 column">
-			<hr>
-				<h3>Entradas - Tiempo Acumulado: <%=@tiempo_tot%></h3>
-				<div id="entradas">
-				<%= render @proyecto.entradas.order('created_at DESC') %>
+			<div class="panel panel-default">
+				<div class="panel-body table-responsive">	
+					<h3>Entradas - Tiempo Acumulado: <%=@tiempo_tot%></h3>
+					
+					<table class="table table-bordered table-condensed">
+					
+						<thead>
+							<tr>
+							<th width="100%" class=""></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div id="entradas">
+										<%= render @proyecto.entradas.order('created_at DESC') %>
+									</div>
+								</td>
+							
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				
-				
-				<hr>
-				
-
+			</div>
 		</div>
+		
 		<div class="col-md-4 column">
-		<hr>
-				<div id="nueva_entrada">
+		<div class="panel panel-default"><div class="panel-body table-responsive">	
+			
+			<div id="nueva_entrada">
 				<%= render :file => 'entradas/new' %>
 				</div>
-				
+		</div></div>
+		<div class="panel panel-default"><div class="panel-body table-responsive">			
 				<h3>Participantes: <%=@proyecto.participantes.count%></h3>
 				
 				<div id="participantes">
 				<%= render @proyecto.participantes.order('created_at DESC') %>
 				</div>
-
-			<div id="participantes">
+		
+		
+					
+		<div id="participantes">
 			<h3>Nuevo participante</h3>
 			<%= form_for @proyecto.participantes.new do |participantes_form| %> 
 			<ul>
@@ -68,7 +88,7 @@
 			
 					<% !User.find(:all, :order => :name).nil? ? personas = User.find(:all, :order => :name) : "" %>
 					<p>Persona: 
-					<%= participantes_form.collection_select :persona_id, personas, :id, :name %>
+					<%= participantes_form.collection_select :persona_id, personas, :id, :short_name %>
 					
 					</p>
 				</li>
@@ -96,70 +116,17 @@
 			
     <% end %>
 
-<%#= render :file => 'participantes/new' %>
-</div>
+
+</div></div>
+		</div>
 		</div>
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-8 column">
-			<ol>
-				<li>
-					Lorem ipsum dolor sit amet
-				</li>
-				<li>
-					Consectetur adipiscing elit
-				</li>
-				<li>
-					Integer molestie lorem at massa
-				</li>
-				<li>
-					Facilisis in pretium nisl aliquet
-				</li>
-				<li>
-					Nulla volutpat aliquam velit
-				</li>
-				<li>
-					Faucibus porta lacus fringilla vel
-				</li>
-				<li>
-					Aenean sit amet erat nunc
-				</li>
-				<li>
-					Eget porttitor lorem
-				</li>
-			</ol>
 			
 		</div>
 		<div class="col-md-4 column">
-			<dl>
-				<dt>
-					Description lists
-				</dt>
-				<dd>
-					A description list is perfect for defining terms.
-				</dd>
-				<dt>
-					Euismod
-				</dt>
-				<dd>
-					Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-				</dd>
-				<dd>
-					Donec id elit non mi porta gravida at eget metus.
-				</dd>
-				<dt>
-					Malesuada porta
-				</dt>
-				<dd>
-					Etiam porta sem malesuada magna mollis euismod.
-				</dd>
-				<dt>
-					Felis euismod semper eget lacinia
-				</dt>
-				<dd>
-					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-				</dd>
-			</dl>
+			
 		</div>
 	</div>
 </div>

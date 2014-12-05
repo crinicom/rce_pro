@@ -16,14 +16,14 @@
   
   <% personas = User.find(:all, :order => :name) %>
 <p>Persona: 
-  <%= f.collection_select :persona_id, personas, :id, :name %>
+  <%= f.collection_select :persona_id, personas, :id, :short_name%>
 </p>
  
  <% proyectos = Proyecto.find(:all, :order => :nombre) %>
 <p>Proyecto:
   <%#= f.collection_select :proyecto_id, proyectos, :id, :nombre %>
   <%= f.hidden_field :proyecto_id, @proyecto.id %>
-  <%= @proyecto.nombre %>
+  <strong><%= @proyecto.nombre %></strong>
 </p>
   
  <% roles = Rol.find(:all, :order => :nombre) %>

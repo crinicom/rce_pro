@@ -1,5 +1,5 @@
 <%= div_for entrada do %>
-<h5><hr>
+<h5>
 <% !entrada.nil? ? persona = User.find_by_id(entrada.persona_id) : "" %>
 <% tipo = TipoEntrada.find(entrada.tipo_entrada_id)%>
 

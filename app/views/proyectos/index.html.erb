@@ -12,13 +12,13 @@
 						
 					  <thead>
 						<tr>
-						  <th width="2%" class="">ID</th>
+						  <th width="3%" class="">ID</th>
 						  <th width="15%" class="">Nombre Proyecto</th>
 						  <th width="5%" class="">Hs prev.</th>
 						  <th width="5%" class="">Hs acum.</th>
 						  <th width="auto">Responsable</th>
 						  <th width="40%" class="">Último comentario</th>
-						  <th width="2%" class=""></th>
+						  <th width="3%" class=""></th>
 						  <th>Usuario</th>
 						  <th>Timestamp</th>
 						</tr>
@@ -35,9 +35,9 @@
 							<td><%= link_to proyecto.nombre, proyecto %></td>
 							<td><%= proyecto.horas %></td>
 							<td><%= proyecto.entradas.map {|e| !e.tiempo.nil? ? e.tiempo : 0}.sum %></td>
-							<td><%= !responsable.nil? ? responsable.nombre : (link_to 'Participantes', proyecto) %></td>
+							<td><%= !responsable.nil? ? responsable.name : (link_to 'Participantes', proyecto) %></td>
 							<td><%= !ent.nil? ? ent.comentario : (link_to "Ingresar comentarios", new_proyecto_entrada_path(proyecto))%></td>
-							<td><%=link_to '', new_proyecto_entrada_path(proyecto), :class => "glyphicon glyphicon-plus"%></td>
+							<td><%= link_to '', new_proyecto_entrada_path(proyecto), :class => "glyphicon glyphicon-plus"%></td>
 							<td><%= !ent.nil? ? @personas.find(ent.persona_id).name : ""%></td>
 							<td><%= !ent.nil? ? ent.created_at : "" %></td>
 							
@@ -80,64 +80,11 @@
 	
 	<div class="row clearfix">
 		<div class="col-md-8 column">
-			<ol>
-				<li>
-					Lorem ipsum dolor sit amet
-				</li>
-				<li>
-					Consectetur adipiscing elit
-				</li>
-				<li>
-					Integer molestie lorem at massa
-				</li>
-				<li>
-					Facilisis in pretium nisl aliquet
-				</li>
-				<li>
-					Nulla volutpat aliquam velit
-				</li>
-				<li>
-					Faucibus porta lacus fringilla vel
-				</li>
-				<li>
-					Aenean sit amet erat nunc
-				</li>
-				<li>
-					Eget porttitor lorem
-				</li>
-			</ol>
+			
 			
 		</div>
 		<div class="col-md-4 column">
-			<dl>
-				<dt>
-					Description lists
-				</dt>
-				<dd>
-					A description list is perfect for defining terms.
-				</dd>
-				<dt>
-					Euismod
-				</dt>
-				<dd>
-					Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-				</dd>
-				<dd>
-					Donec id elit non mi porta gravida at eget metus.
-				</dd>
-				<dt>
-					Malesuada porta
-				</dt>
-				<dd>
-					Etiam porta sem malesuada magna mollis euismod.
-				</dd>
-				<dt>
-					Felis euismod semper eget lacinia
-				</dt>
-				<dd>
-					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-				</dd>
-			</dl>
+			
 		</div>
 	</div>
 </div>
