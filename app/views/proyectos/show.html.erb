@@ -7,9 +7,10 @@
 		<div class="col-md-6 column">
 			<h2><%= @proyecto.nombre %> </h2>
 			<h3>Horas previstas: <%= @proyecto.horas %></h3> 
-			<%= link_to 'Editar', edit_proyecto_path(@proyecto), :class => "btn btn-success align-center" %> |
-			<%= link_to 'Volver', proyectos_path, :class => "btn btn-success align-center" %>
-			<%= link_to 'Eliminar', @proyecto, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger align-center" %> - 
+			<%= link_to 'Editar nombre y horas', edit_proyecto_path(@proyecto), :class => "btn btn-success align-center" %> |
+			<%#= link_to 'Volver', proyectos_path, :class => "btn btn-success align-center" %>
+			<%#= link_to 'Eliminar', @proyecto, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger align-center" %> -
+			
 		</div>
 		<div class="col-md-4 column">
 			
@@ -27,7 +28,7 @@
 				<div class="panel-body table-responsive">			
 					<h3>Descripción</h3>
 						<div id="entradas">
-						<%= !@proyecto.entradas.where(tipo_entrada_id: 01).nil? ? ( render @proyecto.entradas.where(tipo_entrada_id: 01).order('created_at DESC')) : "--DESCRIPCION PENDIENTE--" %>
+						<%= !@proyecto.entradas.where(tipo_entrada_id: @entradas_descripcion.id).nil? ? ( render @proyecto.entradas.where(tipo_entrada_id: @entradas_descripcion.id).order('created_at DESC')) : "--DESCRIPCION PENDIENTE--" %>
 						
 						
 						</div>

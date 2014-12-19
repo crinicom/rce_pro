@@ -7,8 +7,10 @@ class ProyectosController < ApplicationController
     @proyectos = Proyecto.all
 	@personas = User.all
 	@participantes = Participante.all
-	@roles = Rol.all
+	#@roles = Rol.all
 	@entradas = Entrada.all
+	@roles = Rol.all
+	@rol_responsable = @roles.find_by(nombre: "RESPONSABLE")
   end
 
   # GET /proyectos/1
@@ -71,7 +73,12 @@ class ProyectosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_proyecto
       @proyecto = Proyecto.find(params[:id])
-	  
+	@tipos_ent = TipoEntrada.all
+	@entradas_descripcion = @tipos_ent.find_by(nombre: "DESCRIPCION")
+	@entradas_cierre = @tipos_ent.find_by(nombre: "CIERRE")
+	
+	#@rol_ = @tipos_ent.find_by(nombre: "CIERRE")	
+	
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
