@@ -1,0 +1,59 @@
+<%= div_for proyecto do %>
+
+
+
+
+
+<body>
+	<div class="container">
+	<div class="row clearfix">
+	
+		
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-8 main-content">
+			<div class="panel panel-default">
+			
+				<div class="panel-body table-responsive word-wrap">				
+					<h3>Descripción</h3>
+						<div id="entradas">
+						<%= !proyecto.entradas.where(tipo_entrada_id: @entradas_descripcion.id).nil? ? ( render proyecto.entradas.where(tipo_entrada_id: entradas_descripcion.id).order('created_at DESC')) : "--DESCRIPCION PENDIENTE--" %>
+						
+						</div>
+				</div>					
+			</div>
+		
+	
+		
+		
+			<div class="panel panel-default">
+				<div class="panel-body table-responsive word-wrap">	
+					<h3>Entradas - Tiempo Acumulado: <%=@tiempo_tot%></h3>
+					
+					<div id="entradas">
+						<%= render proyecto.entradas.order('created_at DESC') %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<div class="col-sm-4 sidebar">
+		<div class="panel panel-default">
+			<div class="panel-body table-responsive">	
+			
+				<div id="nueva_entrada">
+					<%= render :file => 'entradas/new' %>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	</div>
+	
+	
+</div>
+
+
+<% end %>
+
+

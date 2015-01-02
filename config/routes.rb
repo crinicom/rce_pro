@@ -34,6 +34,9 @@ RCEPro::Application.routes.draw do
 	get 'auth/:provider/callback', to: 'sessions#create'
 	get 'auth/failure', to: redirect('/')
 	get 'signout', to: 'sessions#destroy', as: 'signout'
+	
+	get 'reunion', to: 'reunion#index'
+	get 'reunion/punto', to: 'reunion#_punto'
 
 	resources :sessions, only: [:create, :destroy]
 	resource :home, only: [:show]

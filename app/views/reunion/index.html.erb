@@ -1,0 +1,130 @@
+
+
+<body>
+ <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			
+			
+            
+				<div class="panel-body table-responsive word-wrap">	
+		 
+					<h1>Proyectos vigentes</h1>
+					<table class="table table-bordered table-condensed f11 table-wrap table-striped table-hover">
+						
+					  <thead>
+						<tr>
+						  <th width="3%" class="">ID</th>
+						  <th width="15%" class="">Nombre Proyecto</th>
+						  <th width="15%">Responsable</th>
+						  <th width="5%" class="">Hs prev.</th>
+						  <th width="5%" class="">Hs acum.</th>
+						  <th width="" class="">Último comentario</th>
+						  <th width="" class="">comentarios reunión</th>
+						</tr>
+					  </thead>
+
+					 <tbody>
+					
+								
+					  	
+						<% @proyectos_vigentes.each do |proyecto| %>
+						<% resp = @participantes.find_by(proyecto_id: proyecto, rol_id: @rol_responsable.id) if !@rol_responsable.nil? %>
+						
+						  <% responsable = @personas.find_by_id(resp.persona_id) unless resp.nil? %>
+						  <% ent= proyecto.entradas.last %>
+								
+							
+								<tr>							
+									<td><%= proyecto.id %></td>
+									<td><%= link_to proyecto.nombre, proyecto %></td>
+									<td><%= !responsable.nil? ? responsable.name : (link_to 'Participantes', proyecto) %></td>
+									<td><%= proyecto.horas %></td>
+									<td><%= proyecto.entradas.map {|e| !e.tiempo.nil? ? e.tiempo : 0}.sum %></td>
+									<td>
+										<div id="entradas">
+											<%= !proyecto.entradas.where(tipo_entrada_id: @id_entradas_descripcion.id).nil? ? ( render proyecto.entradas.where(tipo_entrada_id: @id_entradas_descripcion.id).order('created_at DESC')) : "--DESCRIPCION PENDIENTE--" %>
+										</div>
+									</td>
+									<td>
+										<div id="nueva_entrada">
+													<% @proyecto = Proyecto.find(proyecto.id) %>
+													<%#= render :file => 'entradas/new' %>
+												
+											
+												<%= form_for([@proyecto, @proyecto.entradas.new]) do |f| %>
+
+
+												  <%# personas = User.find(current_user.uid) %>
+												<% personas = User.all %>
+												
+												  
+												  <%= f.hidden_field :persona_id, :value => current_user.id %>
+																			 
+												  
+												  <% entradas_tipos = TipoEntrada.find(:all, :order => :nombre) %>
+												
+												  <%= f.hidden_field :tipo_entrada_id, :value => @id_entradas_descripcion.id %>
+												  <%#= @id_entradas_descripcion.nombre %>
+												  <%#= f.collection_select :tipo_entrada_id, entradas_tipos, :id, :nombre%>
+												
+												  
+												   <div class="field">
+												   
+													<%= f.label :fecha_creacion %><br>
+													<%#= f.date_field :fecha_creacion, :value => Time.now.strftime('%Y-%m-%d') %>
+													<%= Date.today.to_s(:db) %>
+													<%= f.hidden_field :fecha_creacion, :value => Date.today %>
+													
+												  </div>
+
+												  <div class="field">
+													<%= f.label :comentario %><br>
+													<div class="actions">
+													<p class="time">
+													<%= f.submit 'Crear nueva entrada',:class => "btn btn-success align-right"%>
+													</p>
+												  </div>
+													<%= f.text_area :comentario, :cols => 37, :rows => 3 %>
+												  </div>
+												  
+												  <div class="field">
+													<%#= f.label :tiempo %><br>
+													<%= f.hidden_field :tiempo, value: 0 %>
+													<%#= f.number_field :tiempo, default: 0%>
+												  </div>
+												  
+												  
+											<% end %>
+									
+										</div>
+									</td>
+									
+								</tr>
+							<% end %>								
+				</div>
+				
+			</div>
+		</div>
+						
+	
+	
+						
+						
+					
+						
+						
+					  </tbody>
+					</table>
+		
+			
+			
+	
+							
+	
+	
+	
+	 
+	
+	
+</body>
