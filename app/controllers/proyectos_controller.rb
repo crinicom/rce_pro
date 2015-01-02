@@ -10,8 +10,18 @@ class ProyectosController < ApplicationController
 	#@roles = Rol.all
 	@entradas = Entrada.all
 	@roles = Rol.all
+	@estados = Estado.all
 	@rol_responsable = @roles.find_by(nombre: "RESPONSABLE")
+	@tipos_ent = TipoEntrada.all
+	id_entradas_cierre = @tipos_ent.find_by(nombre: "CIERRE")
+	id_entradas_descripcion = @tipos_ent.find_by(nombre: "DESCRIPCION")
+	
+    @proyectos_vigentes = @proyectos.select {|pro| pro.entradas.find_by(tipo_entrada_id: id_entradas_cierre).nil?}
+	@proyectos_no_vigentes = @proyectos.select {|pro| !pro.entradas.find_by(tipo_entrada_id: id_entradas_cierre).nil?}
+  
   end
+  
+  
 
   # GET /proyectos/1
   # GET /proyectos/1.json
@@ -75,7 +85,8 @@ class ProyectosController < ApplicationController
       @proyecto = Proyecto.find(params[:id])
 	@tipos_ent = TipoEntrada.all
 	@entradas_descripcion = @tipos_ent.find_by(nombre: "DESCRIPCION")
-	@entradas_cierre = @tipos_ent.find_by(nombre: "CIERRE")
+	
+	
 	
 	#@rol_ = @tipos_ent.find_by(nombre: "CIERRE")	
 	

@@ -3,8 +3,10 @@
 <% !entrada.nil? ? persona = User.find_by_id(entrada.persona_id) : "" %>
 <%  tipo ||= TipoEntrada.find(entrada.tipo_entrada_id) if !entrada.tipo_entrada_id.nil?%>
 
-<strong><%= !persona.nil? ? persona.name : "nombre persona?"%> </strong>&lt;<%= entrada.created_at %>&gt; <%= !tipo.nil? ? tipo.nombre : "" %>
-
+<strong><%= !persona.nil? ? persona.name : "nombre persona?"%> </strong>&lt;<%= entrada.created_at.to_formatted_s(:short) %>&gt; <%= !tipo.nil? ? tipo.nombre : "" %>
+<p class="time">
+		Tiempo: <%= entrada.tiempo %>
+	</p>
 <span class='actions'>
 <%= !@proyecto.nil? ? (link_to 'Delete', proyecto_entrada_path(:proyecto_id => @proyecto,
 :id => entrada), confirm: 'Are you sure?', method: :delete) : "" %>
@@ -12,6 +14,7 @@
 </h5>
 <%= entrada.comentario %>
 
-<p>Tiempo: <%= entrada.tiempo %></p>
+	
+<br>
 
 <% end %>

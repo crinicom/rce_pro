@@ -2,135 +2,123 @@
 
 
 <body>
-<div class="container">
-	<div class="row clearfix">
-		<div class="col-md-6 column">
-			<h2><%= @proyecto.nombre %> </h2>
-			<h3>Horas previstas: <%= @proyecto.horas %></h3> 
-			<%= link_to 'Editar nombre y horas', edit_proyecto_path(@proyecto), :class => "btn btn-success align-center" %> |
-			<%#= link_to 'Volver', proyectos_path, :class => "btn btn-success align-center" %>
-			<%#= link_to 'Eliminar', @proyecto, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger align-center" %> -
-			
-		</div>
-		<div class="col-md-4 column">
-			
-		</div>
-		<div class="col-md-2 column">
-			<h3>
-				
-			</h3>
-		</div>
-	</div>
+	<div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
+			<h2><%= @proyecto.nombre %> </h2>
+			<h3>Horas previstas: <%= @proyecto.horas %></h3> 
+			<%= link_to 'Editar nombre y horas', edit_proyecto_path(@proyecto), :class => "btn btn-success align-center" %>
+			<%#= link_to 'Volver', proyectos_path, :class => "btn btn-success align-center" %>
+			<%#= link_to 'Eliminar', @proyecto, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger align-center" %>
+			
+		</div>
+		
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-8 main-content">
 			<div class="panel panel-default">
 			
-				<div class="panel-body table-responsive">			
+				<div class="panel-body table-responsive word-wrap">				
 					<h3>Descripción</h3>
 						<div id="entradas">
 						<%= !@proyecto.entradas.where(tipo_entrada_id: @entradas_descripcion.id).nil? ? ( render @proyecto.entradas.where(tipo_entrada_id: @entradas_descripcion.id).order('created_at DESC')) : "--DESCRIPCION PENDIENTE--" %>
 						
 						
+						
 						</div>
 				</div>					
 			</div>
-		</div>
-	</div>
-	<div class="row clearfix">
 		
-		<div class="col-md-8 column">
+	
+		
+		
 			<div class="panel panel-default">
-				<div class="panel-body table-responsive">	
+				<div class="panel-body table-responsive word-wrap">	
 					<h3>Entradas - Tiempo Acumulado: <%=@tiempo_tot%></h3>
 					
-					<table class="table table-bordered table-condensed">
-					
-						<thead>
-							<tr>
-							<th width="100%" class=""></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<div id="entradas">
-										<%= render @proyecto.entradas.order('created_at DESC') %>
-									</div>
-								</td>
-							
-							</tr>
-						</tbody>
-					</table>
+					<div id="entradas">
+						<%= render @proyecto.entradas.order('created_at DESC') %>
+					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div class="col-md-4 column">
-		<div class="panel panel-default"><div class="panel-body table-responsive">	
+	<div class="col-sm-4 sidebar">
+		<div class="panel panel-default">
+			<div class="panel-body table-responsive">	
 			
-			<div id="nueva_entrada">
-				<%= render :file => 'entradas/new' %>
+				<div id="nueva_entrada">
+					<%= render :file => 'entradas/new' %>
 				</div>
-		</div></div>
-		<div class="panel panel-default"><div class="panel-body table-responsive">			
-				<h3>Participantes: <%=@proyecto.participantes.count%></h3>
-				
-				<div id="participantes">
-				<%= render @proyecto.participantes.order('created_at DESC') %>
-				</div>
-		
-		
+			</div>
+		</div>
 					
 		<div id="participantes">
-			<h3>Nuevo participante</h3>
-			<%= form_for @proyecto.participantes.new do |participantes_form| %> 
-			<ul>
-				<li>
-			
-					<% !User.find(:all, :order => :name).nil? ? personas = User.find(:all, :order => :name) : "" %>
-					<p>Persona: 
-					<%= participantes_form.collection_select :persona_id, personas, :id, :short_name %>
-					
-					</p>
-				</li>
- 
-				<li>
+	
+			<div class="widget">
+					<ul class="nav nav-tabs two-tabs fancy">
+					  <li class="active"><a href="#particip" data-toggle="tab">Participantes: <%=@proyecto.participantes.count%></a></li>
+					  <li><a href="#nuevo_participante" data-toggle="tab">Nuevo participante</a></li>
+					</ul>
+					<div class="tab-content">
+					  <div class="tab-pane fade in active" id="particip">
+						
+						<ul class="cards list-group not-bottom no-sides">
+						<%= render @proyecto.participantes.order('created_at DESC') %>
+						</ul>
+					   
+					  </div>
+					  <div class="tab-pane fade" id="nuevo_participante">
+						<h3>Nuevo participante</h3>
+								<%= form_for @proyecto.participantes.new do |participantes_form| %> 
+								<ul>
+									<li>
+								
+										<% !User.find(:all, :order => :name).nil? ? personas = User.find(:all, :order => :name) : "" %>
+										<p>Persona: 
+										<%= participantes_form.collection_select :persona_id, personas, :id, :short_name %>
+										
+										</p>
+									</li>
+					 
+									<li>
+							
+										<p>Proyecto:
+										<%# pro = Proyecto.all%>
+										<%#= participantes_form.collection_select :proyecto_id, pro, :id, :nombre %>
+										<%= participantes_form.hidden_field :proyecto_id, :value => @proyecto.id %>
+										<%= @proyecto.nombre %>
+										
+									</li>
+									<li>
+						  
+									<% roles = Rol.find(:all, :order => :nombre) %>
+									<p>Rol en este proyecto:
+									<%= participantes_form.collection_select :rol_id, roles, :id, :nombre %>
+									</p>
+									</li>
+								</ul>
+							  <div class="actions">
+								<%= participantes_form.submit "Asignar participante", :class => "btn btn-success align-center"%>
+							  </div>
+								
+						<% end %>
+					  </div>
+					</div>
+			</div>
 		
-					<p>Proyecto:
-					<%# pro = Proyecto.all%>
-					<%#= participantes_form.collection_select :proyecto_id, pro, :id, :nombre %>
-					<%= participantes_form.hidden_field :proyecto_id, :value => @proyecto.id %>
-					<%= @proyecto.nombre %>
-					
-				</li>
-				<li>
-	  
-				<% roles = Rol.find(:all, :order => :nombre) %>
-				<p>Rol en este proyecto:
-				<%= participantes_form.collection_select :rol_id, roles, :id, :nombre %>
-				</p>
-				</li>
-			</ul>
-		  <div class="actions">
-			<%= participantes_form.submit "Asignar participante", :class => "btn btn-success align-center"%>
-		  </div>
-			
-    <% end %>
-
-
-</div></div>
 		</div>
-		</div>
+	
 	</div>
-	<div class="row clearfix">
-		<div class="col-md-8 column">
-			
-		</div>
-		<div class="col-md-4 column">
-			
-		</div>
 	</div>
+	
+	
 </div>
+
+
+
+
+
 </body>
 
 

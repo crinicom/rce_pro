@@ -1,16 +1,13 @@
 <body>
 	<div class="container">
 		<div class="row clearfix">
-			<div class="col-md-6 column">
+		
 				
 				<h4>Nueva Entrada para Proyecto:</h4>
 				<h4><strong><%= @proyecto.nombre%></strong></h4>
 				
-			</div>
-			
-		</div>
-		<div class="row clearfix">
-			<div class="col-md-12 column">
+		
+		
 				
 			<% @creador = current_user.uid%>
 			<%= params[:persona_id]%>
@@ -56,10 +53,11 @@
 					  </div>
 				<% end %>
 
-				<%= link_to 'Volver a Proyecto', @proyecto %>
+				<%#= link_to 'Volver a Proyecto', @proyecto %>
 			</div>
-		</div>
+		
 	</div>
+	
 </body>
 	
 

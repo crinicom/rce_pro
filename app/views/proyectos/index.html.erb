@@ -4,10 +4,128 @@
  <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			<div class="panel panel-default">
+			
+			<div class="widget">
+            <ul id="myTab" class="nav nav-tabs three-tabs fancy">
+              <li class="active"><a href="#home" data-toggle="tab">Vigentes</a></li>
+              <li><a href="#no_vigentes" data-toggle="tab">No Vigentes</a></li>
+              <li class="dropdown">
+                <a href="#todos" data-toggle="tab">Todos</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="home">
+				
 				<div class="panel-body table-responsive">
 		 
 					<h1>Proyectos vigentes</h1>
+					<table class="table table-bordered table-condensed f11 table-nowrap table-striped table-hover">
+						
+					  <thead>
+						<tr>
+						  <th width="3%" class="">ID</th>
+						  <th width="15%" class="">Nombre Proyecto</th>
+						  <th width="auto">Responsable</th>
+						  <th width="5%" class="">Hs prev.</th>
+						  <th width="5%" class="">Hs acum.</th>
+						  <th width="40%" class="">Último comentario</th>
+						  <th width="3%" class=""></th>
+						  <th>Usuario</th>
+						  <th>Timestamp</th>
+						</tr>
+					  </thead>
+
+					  <tbody>
+						<% @proyectos_vigentes.each do |proyecto| %>
+						<% resp = @participantes.find_by(proyecto_id: proyecto, rol_id: @rol_responsable.id) if !@rol_responsable.nil? %>
+						
+						  <% responsable = @personas.find_by_id(resp.persona_id) unless resp.nil? %>
+						  <% ent= proyecto.entradas.last %>
+						  <tr>
+							<td><%= proyecto.id %></td>
+							<td><%= link_to proyecto.nombre, proyecto %></td>
+							<td><%= !responsable.nil? ? responsable.name : (link_to 'Participantes', proyecto) %></td>
+							<td><%= proyecto.horas %></td>
+							<td><%= proyecto.entradas.map {|e| !e.tiempo.nil? ? e.tiempo : 0}.sum %></td>
+							<td><%= !ent.nil? ? ent.comentario : (link_to "Ingresar comentarios", new_proyecto_entrada_path(proyecto))%></td>
+							<td><%= link_to '', new_proyecto_entrada_path(proyecto), :class => "glyphicon glyphicon-plus"%></td>
+							<td><%= !ent.nil? ? @personas.find(ent.persona_id).name : ""%></td>
+							<td><%= !ent.nil? ? ent.created_at : "" %></td>
+							
+						  </tr>
+						<% end %>
+						
+					  </tbody>
+					</table>
+
+					
+					
+					
+					<br>
+
+					<%= link_to ' + Nuevo Proyecto', new_proyecto_path, :class => "btn btn-success align-center"  %>
+				</div>			
+			
+			</div>
+			 <div class="tab-pane fade" id="no_vigentes">
+                
+                <ul class="cards">
+                    <div class="panel-body table-responsive">
+		 
+					<h1>Proyectos no vigentes</h1>
+					<table class="table table-bordered table-condensed f11 table-nowrap table-striped table-hover">
+						
+					  <thead>
+						<tr>
+						  <th width="3%" class="">ID</th>
+						  <th width="15%" class="">Nombre Proyecto</th>
+						  <th width="auto">Responsable</th>
+						  <th width="5%" class="">Hs prev.</th>
+						  <th width="5%" class="">Hs acum.</th>
+						  <th width="40%" class="">Último comentario</th>
+						  <th width="3%" class=""></th>
+						  <th>Usuario</th>
+						  <th>Timestamp</th>
+						</tr>
+					  </thead>
+
+					  <tbody>
+						<% @proyectos_no_vigentes.each do |proyecto| %>
+						<% resp = @participantes.find_by(proyecto_id: proyecto, rol_id: @rol_responsable.id) if !@rol_responsable.nil? %>
+						
+						  <% responsable = @personas.find_by_id(resp.persona_id) unless resp.nil? %>
+						  <% ent= proyecto.entradas.last %>
+						  <tr>
+							<td><%= proyecto.id %></td>
+							<td><%= link_to proyecto.nombre, proyecto %></td>
+							<td><%= !responsable.nil? ? responsable.name : (link_to 'Participantes', proyecto) %></td>
+							<td><%= proyecto.horas %></td>
+							<td><%= proyecto.entradas.map {|e| !e.tiempo.nil? ? e.tiempo : 0}.sum %></td>
+							<td><%= !ent.nil? ? ent.comentario : (link_to "Ingresar comentarios", new_proyecto_entrada_path(proyecto))%></td>
+							<td><%= link_to '', new_proyecto_entrada_path(proyecto), :class => "glyphicon glyphicon-plus"%></td>
+							<td><%= !ent.nil? ? @personas.find(ent.persona_id).name : ""%></td>
+							<td><%= !ent.nil? ? ent.created_at : "" %></td>
+							
+						  </tr>
+						<% end %>
+						
+					  </tbody>
+					</table>
+
+					
+					
+					
+					<br>
+
+					
+				</div>			
+                </ul>
+              </div>
+              <div class="tab-pane fade" id="todos">
+                <ul class="cards">
+                   <div class="panel-body table-responsive">
+		 
+					<h1>Todos los proyectos</h1>
 					<table class="table table-bordered table-condensed f11 table-nowrap table-striped table-hover">
 						
 					  <thead>
@@ -43,32 +161,55 @@
 							
 						  </tr>
 						<% end %>
+						
 					  </tbody>
 					</table>
 
+					
+					
+					
 					<br>
 
-					<%= link_to ' + Nuevo Proyecto', new_proyecto_path, :class => "btn btn-success align-center"  %>
+					
 				</div>			
-			</div>				
+                </ul>
+              </div>
+            </div>
+        </div>
+	
+							
 		</div>
 	</div>
 	<div class="row clearfix">
-		<div class="col-md-8 column">
+		<div class="col-md-12 column">
 			<hr>
 				<h3>Últimas Entradas<%=@tiempo_tot%></h3>
+		
+				
 				<div id="entradas">
+					<ul class="cards list-group widget" style="border-bottom:0px;">
+					 
 					<% @entradas.order('created_at DESC').take(3).each do |ent| %>
-					<blockquote>
-						<%=  ent.nil? ? nil : (render ent) %>
-						<footer> 
-							Proyecto: <cite title="Source Project"> <%=  @proyectos.find(ent.proyecto_id).nombre if !@proyectos.exists?(ent.proyecto_id).nil? %></cite>
-						</footer>
-					</blockquote>
+					<li class="list-group-item">
+					  <i class="pull-left muted icon-exclamation" style="margin-top:.3em;"></i>
+						<p class="title"> <%=  ent.nil? ? nil : (render ent) %>
+						
+							<strong><p class="time">
+								<cite title="Source Project">Proyecto:  <%=  @proyectos.find(ent.proyecto_id).nombre if !@proyectos.exists?(ent.proyecto_id).nil? %>
+								</cite> </strong>
+							</p>
+						
+					</li>
 					<% end %>
+					
+					</ul>
 				</div>
 								
 				<hr>
+				
+				 
+                
+            </div>
 				
 
 		</div>
@@ -78,44 +219,8 @@
 		</div>
 		</div>
 	
-	<div class="row clearfix">
-		<div class="col-md-8 column">
-			
-			
-		</div>
-		<div class="col-md-4 column">
-			
-		</div>
-	</div>
+	 
+	
+	
 </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////---------------------------------
-
-
