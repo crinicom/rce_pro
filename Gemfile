@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -7,7 +7,7 @@ gem 'rails', '4.0.0'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+#gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -16,16 +16,25 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
+#gem 'therubyracer'
+#gem 'therubyracer', platforms: :ruby
+group :assets do
+	gem 'therubyracer', platforms: :ruby
+	gem 'less-rails', '~> 2.6.0'
+	gem 'twitter-bootstrap-rails', '2.1.7'
+	gem 'less-rails-bootstrap'
+end
+#gem 'twitter-bootstrap-rails', '2.1.7'
+#gem 'less-rails-bootstrap'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem "font-awesome-rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+#gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -46,13 +55,19 @@ gem 'seed_dump'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'bootstrap-sass'
-gem 'bootstrap'
-gem "omniauth-google-oauth2", "~> 0.2.1"
+#gem "middleman", "~>3.0.0"
+#gem "middleman"
 
+#gem 'libv8'
+
+
+#gem "rubyzip"
+gem 'therubyracer', platforms: :ruby
 group :production do
 	gem 'rails_12factor'
 	# Use postgresql as the database for Active Record
+	gem 'therubyracer', platforms: :ruby
+	gem 'libv8', '~> 3.11.8'
 gem 'pg'
 
 end	
@@ -61,12 +76,13 @@ end
 	gem "omniauth-google-oauth2", "~> 0.2.1"
 	
 	# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+#gem 'rails', '4.0.0'
 
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+	
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -74,7 +90,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
