@@ -21,7 +21,7 @@ module RCEPro
     # config.i18n.default_locale = :de
   
 	 config.time_zone = 'Santiago'
-	 config.assets.initialize_on_precompile = false
+	 config.assets.initialize_on_precompile = true
   
   end
   
