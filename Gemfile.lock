@@ -62,7 +62,6 @@ GEM
       less (~> 2.6.0)
     less-rails-bootstrap (3.3.1.0)
       less-rails (~> 2.6.0)
-    libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -164,7 +163,6 @@ DEPENDENCIES
   jquery-rails
   less-rails (~> 2.6.0)
   less-rails-bootstrap
-  libv8 (~> 3.11.8)
   omniauth-google-oauth2 (~> 0.2.1)
   pg
   rails (= 4.0.0)
