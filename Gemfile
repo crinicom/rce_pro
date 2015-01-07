@@ -2,12 +2,10 @@ source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+gem 'ruby','2.0.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
-
-# Use SCSS for stylesheets
-#gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -26,15 +24,12 @@ group :assets do
 end
 #gem 'twitter-bootstrap-rails', '2.1.7'
 #gem 'less-rails-bootstrap'
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem "font-awesome-rails"
+
+#gem "font-awesome-rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-#gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -68,11 +63,11 @@ group :production do
 	# Use postgresql as the database for Active Record
 	#gem 'therubyracer', platforms: :ruby
 	#gem 'libv8', '~> 3.11.8'
-gem 'pg'
+#gem 'pg'
 
 end	
 	gem 'bootstrap-sass'
-	gem 'bootstrap'
+	#gem 'bootstrap'
 	gem "omniauth-google-oauth2", "~> 0.2.1"
 	
 	# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -82,12 +77,7 @@ end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
-	
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 
