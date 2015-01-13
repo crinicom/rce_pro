@@ -64,7 +64,7 @@ group :production do
 	#gem 'therubyracer', platforms: :ruby
 	#gem 'libv8', '~> 3.11.8'
 #gem 'pg'
-
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 end	
 	gem 'bootstrap-sass'
 	#gem 'bootstrap'
@@ -77,6 +77,7 @@ end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+gem 'yui-compressor'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

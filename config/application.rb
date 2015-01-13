@@ -22,6 +22,7 @@ module RCEPro
   
 	 config.time_zone = 'Santiago'
 	 config.assets.initialize_on_precompile = false
+	 config.serve_static_assets = true
   
   end
   
