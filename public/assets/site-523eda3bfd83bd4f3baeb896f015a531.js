@@ -1,0 +1,1 @@
+$(function(){$("#sidebar-nav").on("show.bs.tooltip","a",function(t){return $(t.currentTarget).find("span:visible").length?(t.preventDefault(),!1):void 0})});var fancyFilter=function(t,i){$(t+" a").click(function(){$(t+" li").removeClass("active");var e=$(this),n=e.data("filter");return n?(e.closest("li").addClass("active"),$(i).isotope({filter:n}),!1):!0})};
