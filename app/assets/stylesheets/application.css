@@ -10,7 +10,7 @@
  *
  
  *= require_tree .
- *= font-awesome
+ *= require font-awesome 
  */
 .table-nowrap {
 	table-layout:fixed;
