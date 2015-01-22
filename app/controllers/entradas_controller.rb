@@ -67,7 +67,7 @@ class EntradasController < ApplicationController
     respond_to do |format|
       if @entrada.save
         #format.html { redirect_to [@entrada.proyecto, @entrada], notice: 'Entrada was successfully created.' }
-		format.html { redirect_to proyecto_url(params[:proyecto_id]), notice: 'Entrada was successfully created.' }
+				format.html { redirect_to proyecto_url(params[:proyecto_id]), notice: 'Entrada was successfully created.' }
         format.json { render action: 'show', status: :created, location: [@entrada.proyecto,@entrada] }
       else
         format.html { render action: 'new' }

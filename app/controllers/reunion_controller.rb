@@ -51,7 +51,7 @@ class ReunionController < ApplicationController
 
     respond_to do |format|
       if @proyecto.save
-        format.html { redirect_to @proyecto, notice: 'Proyecto was successfully created.' }
+        #format.html { redirect_to @proyecto, notice: 'Proyecto was successfully created.' }
         format.json { render action: 'show', status: :created, location: @proyecto }
       else
         format.html { render action: 'new' }
@@ -65,7 +65,7 @@ class ReunionController < ApplicationController
   def update
     respond_to do |format|
       if @proyecto.update(proyecto_params)
-        format.html { redirect_to @proyecto, notice: 'Proyecto was successfully updated.' }
+        #format.html { redirect_to @proyecto, notice: 'Proyecto was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
