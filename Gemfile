@@ -60,10 +60,7 @@ gem 'seed_dump'
 gem 'therubyracer', platforms: :ruby
 group :production do
 	gem 'rails_12factor'
-	# Use postgresql as the database for Active Record
-	#gem 'therubyracer', platforms: :ruby
-	#gem 'libv8', '~> 3.11.8'
-#gem 'pg'
+	gem 'unicorn'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 end	
 	gem 'bootstrap-sass'
